@@ -58,4 +58,70 @@
         let pageSize = 40;
         let currentSort = 'hot';
 
-        const gameList =
+        const gameList = document.getElementById('gameList');
+        const loadedSpan = document.getElementById('loaded');
+        const totalSpan = document.getElementById('total');
+
+        // 加载数据
+        fetch('games-library.json')
+            .then(r => r.json())
+            .then(data => {
+                games = data.games;
+                totalSpan.textContent = data.total;
+                sortAndRender();
+            });
+
+        // 排序并渲染
+        function sortAndRender() {
+            let sorted = [...games];
+            if (currentSort === 'hot') sorted.sort((a,b)=>b.hotness-a.hotness);
+            if (currentSort === 'rating') sorted.sort((a,b)=>b.rating-a.rating);
+            if (currentSort === 'new') sorted.sort((a,b)=>b.id-a.id);
+            if (currentSort === 'free') sorted = sorted.filter(g=>g.price.includes('免费'));
+
+            displayed = sorted.slice(0, pageSize);
+            render(displayed);
+        }
+
+        function render(list) {
+            gameList.innerHTML = '';
+            list.forEach(g => {
+                const div = document.createElement('div');
+                div.className = 'game-card';
+                div.innerHTML = `
+                    <img src="${g.cover}" alt="${g.name}" loading="lazy">
+                    <div class="info">
+                        <h3>${g.name}</h3>
+                        <div class="rating">★ ${g.rating}</div>
+                        <div class="type">${g.type}</div>
+                        <div class="price">${g.price}</div>
+                    </div>
+                `;
+                gameList.appendChild(div);
+            });
+            loadedSpan.textContent = list.length;
+        }
+
+        // 标签切换
+        document.querySelectorAll('.tabs button').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelector('.tabs .active').classList.remove('active');
+                btn.classList.add('active');
+                currentSort = btn.dataset.sort;
+                pageSize = 40;
+                sortAndRender();
+            };
+        });
+
+        // 无限滚动
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 300) {
+                if (displayed.length < games.length) {
+                    pageSize += 40;
+                    sortAndRender();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
