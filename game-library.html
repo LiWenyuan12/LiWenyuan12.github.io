@@ -1,224 +1,250 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>游戏库 - GameBox 游盒</title>
-    <link rel="stylesheet" href="style.css"> <!-- 你原来的公共样式 -->
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f7fa; margin: 0; margin: 0; }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: center; padding: 40px 20px; }
-        header h1 { font-size: 2.8em; margin: 0; }
-        header p { font-size: 1.2em; opacity: 0.9; margin: 10px 0 0; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-
-        /* 搜索 + 筛选栏 */
-        .filters {
-            display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-            margin: 25px 0; padding: 15px; background: #fff; border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        .search-box {
-            flex: 1; min-width: 280px; padding: 12px 18px; border: 2px solid #e0e0e0;
-            border-radius: 30px; font-size: 16px; outline: none;
-        }
-        .search-box:focus { border-color: #667eea; }
-        select {
-            padding: 12px 18px; border: 2px solid #e0e0e0; border-radius: 30px;
-            background: #fff; font-size: 15px; min-width: 140px;
-        }
-
-        /* 加载计数 */
-        .counter {
-            text-align: center; font-size: 16px; color: #555; margin: 20px 0;
-        }
-
-        /* 竖向大卡片布局 */
-        .game-list { display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .game-card {
-            width: 100%; max-width: 900px; background: #fff; border-radius: 20px;
-            overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-            display: flex; align-items: center; transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-        }
-        .game-card img {
-            width: 280px; height: 380px; object-fit: cover; flex-shrink: 0;
-        }
-        .info {
-            padding: 30px; flex: 1;
-        }
-        .info h3 { font-size: 28px; margin: 0 0 12px; color: #222; }
-        .meta { display: flex; flex-wrap: wrap; gap: 15px; color: #666; font-size: 16px; margin: 12px 0; }
-        .rating { color: #ffa724; font-weight: bold; font-size: 20px; }
-        .price {
-            background: #e91e63; color: #fff; padding: 6px 16px; border-radius: 30px;
-            font-weight: bold; font-size: 18px;
-        }
-        .description { color: #444; line-height: 1.6; margin-top: 16px; }
-
-        @media (max-width: 768px) {
-            .game-card { flex-direction: column; }
-            .game-card img { width: 100%; height: 300px; }
-            .info { padding: 20px; text-align: center; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>GameBox 游盒 - 游戏库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="index.css" />
 </head>
-<body>
+<body data-current-page="library">
+<div class="page">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">G</div>
+        <div>
+          <div>GameBox 游盒</div>
+          <div class="logo-sub">LIGHTWEIGHT GAME HUB</div>
+        </div>
+      </a>
 
-<header>
-    <h1>GameBox 游盒</h1>
-    <p>游戏库 · 发现你下一个沉迷的游戏</p>
-</header>
+      <nav class="nav-main">
+        <a href="index.html" data-page="home" class="nav-link">首页</a>
+        <a href="news-list.html" data-page="news" class="nav-link">资讯</a>
+        <a href="game-library.html" data-page="library" class="nav-link">游戏库</a>
+        <a href="ranking.html" data-page="ranking" class="nav-link">
+          排行榜 <span class="badge">HOT</span>
+        </a>
+        <a href="discount.html" data-page="discount" class="nav-link">折扣 / 史低</a>
+        <a href="community.html" data-page="community" class="nav-link">社区</a>
+        <a href="my-library.html" data-page="my" class="nav-link">我的游戏</a>
+        <a href="tools.html" data-page="tools" class="nav-link">工具中心</a>
+        <a href="profile.html" data-page="profile" class="nav-link">用户中心</a>
+      </nav>
 
-<div class="container">
-
-    <!-- 搜索 + 分类筛选 -->
-    <div class="filters">
-        <input type="text" id="searchInput" class="search-box" placeholder="搜索游戏名称…">
-        <select id="typeFilter">
-            <option value="">全部类型</option>
-            <option>动作</option><option>开放世界</option><option>RPG</option>
-            <option>射击</option><option>策略</option><option>模拟经营</option>
-            <option>Roguelike</option><option>冒险解谜</option><option>生存恐怖</option>
-            <option>休闲</option><option>免费</option><option>卡牌</option>
-        </select>
-        <select id="platformFilter">
-            <option value="">全部平台</option>
-            <option>PC</option><option>PS5</option><option>Xbox</option>
-            <option>Nintendo Switch</option><option>手机</option><option>Steam Deck</option>
-        </select>
+      <div class="header-right">
+        <div class="header-search">
+          <input type="text" placeholder="搜索游戏 / 资讯 / 帖子" />
+          <span class="header-search-icon">🔍</span>
+        </div>
+        <button class="header-user">未登录 · 游客</button>
+      </div>
     </div>
+  </header>
 
-    <div class="counter">
-        已加载 <span id="loaded">0</span> / <span id="total">0</span> 款游戏
-    </div>
+  <main class="main">
+    <section>
+      <div class="card">
+        <div class="page-title">游戏库</div>
+        <div class="page-intro">
+          通过名称、类型、平台和价格区间来筛选你感兴趣的游戏（示例数据）。
+        </div>
+      </div>
 
-    <div class="game-list" id="gameList"></div>
+      <div class="card">
+        <header class="card-header">
+          <div class="card-title">
+            <span class="dot"></span>
+            <span>筛选条件</span>
+          </div>
+        </header>
+
+        <div class="form">
+          <div class="form-row">
+            <label for="libSearch">按名称搜索</label>
+            <input type="text" id="libSearch" placeholder="输入游戏名，如：艾尔登法环" />
+          </div>
+
+          <div class="form-row">
+            <label for="libType">类型</label>
+            <select id="libType">
+              <option value="all">全部类型</option>
+              <option value="action">动作 / ACT</option>
+              <option value="rpg">角色扮演 / RPG</option>
+              <option value="strategy">策略 / SLG</option>
+              <option value="indie">独立 / Indie</option>
+              <option value="multiplayer">多人联机</option>
+              <option value="casual">休闲 / 轻度</option>
+              <option value="card">卡牌</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>平台（可多选）</label>
+            <div id="libPlatforms" style="display:flex;flex-wrap:wrap;gap:8px;font-size:12px;">
+              <label><input type="checkbox" value="steam" checked /> Steam</label>
+              <label><input type="checkbox" value="pc" checked /> PC（其他平台）</label>
+              <label><input type="checkbox" value="ps" checked /> PlayStation</label>
+              <label><input type="checkbox" value="switch" checked /> Switch</label>
+              <label><input type="checkbox" value="mobile" checked /> 手机</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="libPrice">价格区间</label>
+            <select id="libPrice">
+              <option value="all">全部</option>
+              <option value="free">免费 / F2P</option>
+              <option value="low">100 元以下</option>
+              <option value="high">100 元以上</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <header class="card-header">
+          <div class="card-title">
+            <span class="dot"></span>
+            <span>筛选结果</span>
+          </div>
+          <div class="chip" id="libResultCount">共 0 款</div>
+        </header>
+        <div id="libList" class="game-list"></div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-title">小提示</div>
+        <div class="sidebar-item">
+          <span class="label">可与首页分类联动</span>
+          <span class="value">支持</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="label">数据来源</span>
+          <span class="value">示例假数据</span>
+        </div>
+      </div>
+    </aside>
+  </main>
 </div>
 
+<script src="common.js"></script>
 <script>
-    let allGames = [];
-    const gameList = document.getElementById('gameList');
-    const loadedSpan = document.getElementById('loaded');
-    const totalSpan = document.getElementById('total');
-    let displayedCount = 0;
-    const PAGE_SIZE = 15;
+  initCommon();
 
-    // 加载数据
-    fetch('games-library.json')
+  fetch('games-library.json')
         .then(r => r.json())
         .then(data => {
             allGames = data.games.map(g => ({
                 ...g,
-                // 给每款游戏补上平台标签（可自行修改）
-                platform: g.id % 6 === 0 ? "PS5" :
-                          g.id % 5 === 0 ? "Switch" :
-                          g.id % 4 === 0 ? "Xbox" :
-                          g.id % 3 === 0 ? "手机" : "PC"
-            }));
-            totalSpan.textContent = allGames.length;
-            filterAndRender();
-        });
 
-    // 筛选 + 搜索 + 渲染
-    function filterAndRender() {
-        let filtered = allGames;
+  const libSearch = document.getElementById("libSearch");
+  const libType = document.getElementById("libType");
+  const libPrice = document.getElementById("libPrice");
+  const libPlatforms = document.getElementById("libPlatforms");
+  const libList = document.getElementById("libList");
+  const libResultCount = document.getElementById("libResultCount");
+  
+  gameData.forEach(g => {
+  g.cover = `../images/covers/${g.id}.jpg`;
+});
+  
+  function getSelectedPlatforms() {
+    return Array.from(libPlatforms.querySelectorAll("input[type=checkbox]:checked")).map(
+      (el) => el.value
+    );
+  }
 
-        // 搜索
-        const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
-        if (keyword) {
-            filtered = filtered.filter(g => g.name.toLowerCase().includes(keyword));
-        }
-
-        // 类型筛选
-        const type = document.getElementById('typeFilter').value;
-        if (type) {
-            if (type === "免费") {
-                filtered = filtered.filter(g => g.price.includes("免费"));
-            } else {
-                filtered = filtered.filter(g => g.type.includes(type));
-            }
-        }
-
-        // 平台筛选
-        const platform = document.getElementById('platformFilter').value;
-        if (platform) filtered = filtered.filter(g => g.platform === platform);
-
-        // 重置显示数量
-        displayedCount = 0;
-        gameList.innerHTML = '';
-        loadMore(filtered);
+  function matchesFilters(game, keyword, type, price, platforms) {
+    const kw = keyword.trim().toLowerCase();
+    if (kw) {
+      const text = (game.name + " " + game.tags.join(" ")).toLowerCase();
+      if (!text.includes(kw)) return false;
     }
 
-    // 加载更多（无限滚动）
-    function loadMore(list) {
-        const fragment = document.createDocumentFragment();
-        const end = displayedCount + PAGE_SIZE;
-        const items = list.slice(displayedCount, end);
+    if (type !== "all" && game.type !== type) return false;
 
-        items.forEach(g => {
-            const div = document.createElement('div');
-            div.className = 'game-card';
-            div.innerHTML = `
-                <img src="${g.cover}" alt="${g.name}" loading="lazy">
-                <div class="info">
-                    <h3>${g.name}</h3>
-                    <div class="meta">
-                        <span class="rating">★ ${g.rating}</span>
-                        <span>${g.type}</span>
-                        <span>平台：${g.platform}</span>
-                        <span class="price">${g.price}</span>
-                    </div>
-                    <div class="description">${g.description || '暂无简介'}</div>
-                </div>
-            `;
-            fragment.appendChild(div);
-        });
-
-        gameList.appendChild(fragment);
-        displayedCount += items.length;
-        loadedSpan.textContent = displayedCount;
-
-        // 到底自动加载
-        if (displayedCount < list.length) {
-            loadMore(list);
-        }
+    if (platforms.length) {
+      const hit = game.platforms.some((p) => platforms.includes(p));
+      if (!hit) return false;
     }
 
-    // 监听搜索与筛选变化
-    document.getElementById('searchInput').addEventListener('input', filterAndRender);
-    document.getElementById('typeFilter').addEventListener('change', filterAndRender);
-    document.getElementById('platformFilter').addEventListener('change', filterAndRender);
+    if (price === "free" && game.price !== 0) return false;
+    if (price === "low" && !(game.price > 0 && game.price <= 100)) return false;
+    if (price === "high" && !(game.price > 100)) return false;
 
-    // 滚动到底加载更多（防抖）
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 600) {
-                const currentList = (() => {
-                    let f = allGames;
-                    const kw = document.getElementById('searchInput').value.trim().toLowerCase();
-                    if (kw) f = f.filter(g => g.name.toLowerCase().includes(kw));
-                    const t = document.getElementById('typeFilter').value;
-                    if (t) {
-                        if (t === "免费") f = f.filter(g => g.price.includes("免费"));
-                        else f = f.filter(g => g.type.includes(t));
-                    }
-                    const p = document.getElementById('platformFilter').value;
-                    if (p) f = f.filter(g => g.platform === p);
-                    return f;
-                })();
-                if (displayedCount < currentList.length) loadMore(currentList);
+    return true;
+  }
+
+  function renderList() {
+    const keyword = libSearch.value;
+    const type = libType.value;
+    const price = libPrice.value;
+    const platforms = getSelectedPlatforms();
+
+    const filtered = gameData.filter((g) =>
+      matchesFilters(g, keyword, type, price, platforms)
+    );
+
+    libList.innerHTML = "";
+    libResultCount.textContent = `共 ${filtered.length} 款`;
+
+    if (!filtered.length) {
+      libList.innerHTML =
+        '<div style="font-size:12px;color:var(--text-muted);">没有找到符合条件的游戏，可以尝试放宽筛选条件。</div>';
+      return;
+    }
+
+    filtered.forEach((g) => {
+      const div = document.createElement("div");
+      div.className = "game-card";
+      div.innerHTML = `
+        <div class="game-cover" style="background-image: url('${g.cover}')"></div>
+        <div class="game-info">
+          <div class="game-name">${g.name}</div>
+          <div class="game-meta">
+            类型：${g.type.toUpperCase()} · 平台：${g.platforms.join("/")} · 评分：${g.rating.toFixed(
+        1
+      )}
+          </div>
+          <div class="game-footer">
+            ${
+              g.price === 0
+                ? '<span class="tag tag--accent">免费</span>'
+                : `<span class="tag">价格：¥${g.price}</span>`
             }
-            ticking = false;
-        });
+            ${g.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+          </div>
+        </div>
+      `;
+      div.addEventListener("click", () => {
+        if (g.id === "elden-ring") {
+          window.location.href = "game-detail.html";
+        }
+      });
+      libList.appendChild(div);
     });
+  }
+
+  libSearch.addEventListener("input", renderList);
+  libType.addEventListener("change", renderList);
+  libPrice.addEventListener("change", renderList);
+  libPlatforms.addEventListener("change", renderList);
+
+  // 如果是从首页分类跳转而来，处理 URL 参数 cat
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get("cat");
+  if (cat) {
+    if (cat === "action" || cat === "rpg" || cat === "strategy" || cat === "indie" || cat === "multiplayer" || cat === "casual") {
+      libType.value = cat;
+    } else if (cat === "free") {
+      libPrice.value = "free";
+    }
+  }
+
+  renderList();
 </script>
 </body>
 </html>
