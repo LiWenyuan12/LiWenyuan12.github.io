@@ -240,7 +240,8 @@
   fetch("games-library.json")
     .then((res) => res.json())
     .then((data) => {
-      gameData = data;
+      gameData = data.games;
+
 
       // 如果首页传了 cat 参数（分类）
       const params = new URLSearchParams(window.location.search);
