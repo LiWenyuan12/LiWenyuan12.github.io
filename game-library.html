@@ -1,3 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>GameBox 游盒 - 游戏库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body data-current-page="library">
+<div class="page">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">G</div>
+        <div>
+          <div>GameBox 游盒</div>
+          <div class="logo-sub">LIGHTWEIGHT GAME HUB</div>
+        </div>
+      </a>
+
+      <nav class="nav-main">
+        <a href="index.html" data-page="home" class="nav-link">首页</a>
+        <a href="news-list.html" data-page="news" class="nav-link">资讯</a>
+        <a href="game-library.html" data-page="library" class="nav-link">游戏库</a>
+        <a href="ranking.html" data-page="ranking" class="nav-link">
+          排行榜 <span class="badge">HOT</span>
+        </a>
+        <a href="discount.html" data-page="discount" class="nav-link">折扣 / 史低</a>
+        <a href="community.html" data-page="community" class="nav-link">社区</a>
+        <a href="my-library.html" data-page="my" class="nav-link">我的游戏</a>
+        <a href="tools.html" data-page="tools" class="nav-link">工具中心</a>
+        <a href="profile.html" data-page="profile" class="nav-link">用户中心</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-search">
+          <input type="text" placeholder="搜索游戏 / 资讯 / 帖子" />
+          <span class="header-search-icon">🔍</span>
+        </div>
+        <button class="header-user">未登录 · 游客</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section>
+      <div class="card">
+        <div class="page-title">游戏库</div>
+        <div class="page-intro">
+          通过名称、类型、平台和价格区间来筛选你感兴趣的游戏（示例数据）。
+        </div>
+      </div>
+
+      <div class="card">
+        <header class="card-header">
+          <div class="card-title">
+            <span class="dot"></span>
+            <span>筛选条件</span>
+          </div>
+        </header>
+
+        <div class="form">
+          <div class="form-row">
+            <label for="libSearch">按名称搜索</label>
+            <input type="text" id="libSearch" placeholder="输入游戏名，如：艾尔登法环" />
+          </div>
+
+          <div class="form-row">
+            <label for="libType">类型</label>
+            <select id="libType">
+              <option value="all">全部类型</option>
+              <option value="action">动作 / ACT</option>
+              <option value="rpg">角色扮演 / RPG</option>
+              <option value="strategy">策略 / SLG</option>
+              <option value="indie">独立 / Indie</option>
+              <option value="multiplayer">多人联机</option>
+              <option value="casual">休闲 / 轻度</option>
+              <option value="card">卡牌</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>平台（可多选）</label>
+            <div id="libPlatforms" style="display:flex;flex-wrap:wrap;gap:8px;font-size:12px;">
+              <label><input type="checkbox" value="steam" checked /> Steam</label>
+              <label><input type="checkbox" value="pc" checked /> PC（其他平台）</label>
+              <label><input type="checkbox" value="ps" checked /> PlayStation</label>
+              <label><input type="checkbox" value="switch" checked /> Switch</label>
+              <label><input type="checkbox" value="mobile" checked /> 手机</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="libPrice">价格区间</label>
+            <select id="libPrice">
+              <option value="all">全部</option>
+              <option value="free">免费 / F2P</option>
+              <option value="low">100 元以下</option>
+              <option value="high">100 元以上</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <header class="card-header">
+          <div class="card-title">
+            <span class="dot"></span>
+            <span>筛选结果</span>
+          </div>
+          <div class="chip" id="libResultCount">共 0 款</div>
+        </header>
+        <div id="libList" class="game-list"></div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-title">小提示</div>
+        <div class="sidebar-item">
+          <span class="label">可与首页分类联动</span>
+          <span class="value">支持</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="label">数据来源</span>
+          <span class="value">示例假数据</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+</div>
+
 <script src="common.js"></script>
 <script>
   initCommon();
@@ -131,4 +263,5 @@
     });
 </script>
 
-
+</body>
+</html>
