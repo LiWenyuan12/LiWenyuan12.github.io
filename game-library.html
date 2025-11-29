@@ -4,32 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>游戏库 - GameBox 游盒</title>
-    <link rel="stylesheet" href="style.css"> <!-- 假设你有公共 CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 保持和首页完全一致的卡片风格 */
+        .game-library { display: flex; flex-wrap: wrap; gap: 18px; padding: 20px; justify-content: center; }
+        .game-card {
+            width: 200px; background: #fff; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s;
+        }
+        .game-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,0.15); }
+        .game-card img { width: 100%; height: 280px; object-fit: cover; }
+        .info { padding: 12px; text-align: center; }
+        .info h3 { font-size: 16px; margin: 0 0 6px; color: #222; height: 48px; overflow: hidden; }
+        .rating { color: #ffa724; font-weight: bold; }
+        .type { font-size: 13px; color: #666; margin: 4px 0; }
+        .price { font-size: 14px; color: #e91e63; font-weight: bold; }
+
+        .ranking-tabs { text-align: center; padding: 15px 0; background: #f8f9fa; }
+        .tabs button {
+            padding: 10px 20px; margin: 0 6px; border: none; border-radius: 30px;
+            background: #e0e0e0; cursor: pointer; transition: all 0.3s; font-size: 15px;
+        }
+        .tabs button.active, .tabs button:hover { background: #007bff; color: #fff; }
+        .load-counter { margin: 15px 0; font-size: 15px; color: #555; }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="search-icon">🔍</div>
-        <div class="login-status">未登录 · 游客</div>
-        <h1>游戏库 - 发现更多好游戏</h1>
+
+    <header style="text-align:center;padding:20px 0;background:#007bff;color:#fff;">
+        <h1>GameBox 游盒 · 游戏库</h1>
+        <p style="margin:8px 0 0;font-size:16px;opacity:0.9;">海量好游 尽在掌握</p>
     </header>
 
-    <!-- 类似于首页的标签页：热度/评分/类型等 -->
     <section class="ranking-tabs">
         <div class="tabs">
-            <button class="tab active" data-tab="hot">热度</button>
-            <button class="tab" data-tab="rating">评分</button>
-            <button class="tab" data-tab="new">新品</button>
-            <button class="tab" data-tab="discount">折扣</button>
-            <button class="tab" data-tab="all">全部</button>
+            <button class="active" data-sort="hot">热度最高</button>
+            <button data-sort="rating">评分最高</button>
+            <button data-sort="new">最新上架</button>
+            <button data-sort="free">免费游戏</button>
         </div>
-        <div class="load-counter">已加载 <span id="loaded-count">0</span> / <span id="total-count">0</span> 款</div>
+        <div class="load-counter">
+            已加载 <span id="loaded">0</span> / <span id="total">0</span> 款
+        </div>
     </section>
 
-    <!-- 游戏库列表：卡片式显示，类似于首页但更详细 -->
-    <section class="game-library" id="game-list">
-        <!-- JS 会动态填充这里 -->
+    <section class="game-library" id="gameList">
+        <!-- JS 自动填充 -->
     </section>
 
-    <script src="library.js"></script> <!-- 自定义 JS -->
-</body>
-</html>
+    <script>
+        let games = [];
+        let displayed = [];
+        let pageSize = 40;
+        let currentSort = 'hot';
+
+        const gameList =
