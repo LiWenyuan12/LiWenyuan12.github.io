@@ -237,10 +237,15 @@
   libPlatforms.addEventListener("change", renderList);
 
   // 读取 JSON 文件
-  fetch("games-library.json")
-    .then((res) => res.json())
-    .then((data) => {
-      gameData = data.games;
+ fetch("games-library.json")
+  .then(res => res.json())
+  .then(data => {
+    gameData = data.games;  // ← 改这里
+    renderList();
+  })
+  .catch(err => {
+    console.error("加载 games-library.json 出错：", err);
+  });
 
 
       // 如果首页传了 cat 参数（分类）
