@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>GameBox 游盒 - 游戏库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body data-current-page="library">
+<div class="page">
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">G</div>
+        <div>
+          <div>GameBox 游盒</div>
+          <div class="logo-sub">LIGHTWEIGHT GAME HUB</div>
+        </div>
+      </a>
+
+      <nav class="nav-main">
+        <a href="index.html" data-page="home" class="nav-link">首页</a>
+        <a href="news-list.html" data-page="news" class="nav-link">资讯</a>
+        <a href="game-library.html" data-page="library" class="nav-link">游戏库</a>
+        <a href="ranking.html" data-page="ranking" class="nav-link">
+          排行榜 <span class="badge">HOT</span>
+        </a>
+        <a href="discount.html" data-page="discount" class="nav-link">折扣 / 史低</a>
+        <a href="community.html" data-page="community" class="nav-link">社区</a>
+        <a href="my-library.html" data-page="my" class="nav-link">我的游戏</a>
+        <a href="tools.html" data-page="tools" class="nav-link">工具中心</a>
+        <a href="profile.html" data-page="profile" class="nav-link">用户中心</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-search">
+          <input type="text" placeholder="搜索游戏 / 资讯 / 帖子" />
+          <span class="header-search-icon">🔍</span>
+        </div>
+        <button class="header-user">未登录 · 游客</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section>
+      <div class="card">
+        <div class="page-title">游戏库</div>
+        <div class="page-intro">
+          通过名称、类型、平台和价格区间来筛选你感兴趣的游戏（示例数据）。
+        </div>
+      </div>
+
+      <div class="card">
+        <header class="card-header">
+          <div class="card-title">
+            <span class="dot"></span>
+            <span>筛选条件</span>
+          </div>
+        </header>
+
+        <div class="form">
+          <div class="form-row">
+            <label for="libSearch">按名称搜索</label>
+            <input type="text" id="libSearch" placeholder="输入游戏名，如：艾尔登法环" />
+          </div>
+
+          <div class="form-row">
+            <label for="libType">类型</label>
+            <select id="libType">
+              <option value="all">全部类型</option>
+              <option value="action">动作 / ACT</option>
+              <option value="rpg">角色扮演 / RPG</option>
+              <option value="strategy">策略 / SLG</option>
+              <option value="indie">独立 / Indie</option>
+              <option value="multiplayer">多人联机</option>
+              <option value="casual">休闲 / 轻度</option>
+              <option value="card">卡牌</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label>平台（可多选）</label>
+            <div id="libPlatforms" style="display:flex;flex-wrap:wrap;gap:8px;font-size:12px;">
+              <label><input type="checkbox" value="steam" checked /> Steam</label>
+              <label><input type="checkbox" value="pc" checked /> PC（其他平台）</label>
+              <label><input type="checkbox" value="ps" checked /> PlayStation</label>
+              <label><input type="checkbox" value="switch" checked /> Switch</label>
+              <label><input type="checkbox" value="mobile" checked /> 手机</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="libPrice">价格区间</label>
+            <select id="libPrice">
+              <option value="all">全部</option>
+              <option value="free">免费 / F2P</option>
+              <option value="low">100 元以下</option>
+              <option value="high">100 元以上</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <header class="card-header">
+          <div class="card-title">
+            <span class="dot"></span>
+            <span>筛选结果</span>
+          </div>
+          <div class="chip" id="libResultCount">共 0 款</div>
+        </header>
+        <div id="libList" class="game-list"></div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-title">小提示</div>
+        <div class="sidebar-item">
+          <span class="label">可与首页分类联动</span>
+          <span class="value">支持</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="label">数据来源</span>
+          <span class="value">示例假数据</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script src="common.js"></script>
+<script>
+  initCommon();
+
+  const gameData = [
+    {
+    id: "elden-ring",
+    name: "艾尔登法环",
+    platforms: ["steam", "ps"],
+    type: "rpg",
+    tags: ["魂类", "开放世界"],
+    price: 298,
+    rating: 9.4
+  },
+  {
+    id: "genshin",
+    name: "原神",
+    platforms: ["pc", "mobile", "ps"],
+    type: "rpg",
+    tags: ["开放世界", "抽卡"],
+    price: 0,
+    rating: 10
+  },
+  {
+    id: "cs2",
+    name: "CS2",
+    platforms: ["steam"],
+    type: "multiplayer",
+    tags: ["FPS", "竞技"],
+    price: 0,
+    rating: 8.6
+  },
+  {
+    id: "mh-world",
+    name: "怪物猎人：世界",
+    platforms: ["steam", "ps"],
+    type: "action",
+    tags: ["刷刷刷", "合作"],
+    price: 248,
+    rating: 8.5
+  },
+  {
+    id: "hollow-knight",
+    name: "空洞骑士",
+    platforms: ["steam", "switch"],
+    type: "indie",
+    tags: ["类银河战士恶魔城", "硬核"],
+    price: 48,
+    rating: 9.6
+  },
+  {
+    id: "cp2077",
+    name: "赛博朋克 2077",
+    platforms: ["steam", "ps"],
+    type: "rpg",
+    tags: ["开放世界", "科幻"],
+    price: 298,
+    rating: 8.7
+  },
+  {
+    id: "mh-rise",
+    name: "怪物猎人：崛起",
+    platforms: ["steam", "switch"],
+    type: "action",
+    tags: ["刷刷刷", "合作"],
+    price: 268,
+    rating: 8.5
+  },
+  {
+    id: "fake-strategy",
+    name: "虚构策略：银河棋局",
+    platforms: ["pc"],
+    type: "strategy",
+    tags: ["SLG", "回合制"],
+    price: 88,
+    rating: 8.2
+  },
+  {
+    id: "fake-casual",
+    name: "下班之后：小镇时光",
+    platforms: ["mobile"],
+    type: "casual",
+    tags: ["休闲", "模拟经营"],
+    price: 0,
+    rating: 7.9
+  },
+  {
+    id: "stardew-valley",
+    name: "星露谷物语",
+    platforms: ["steam", "switch"],
+    type: "indie",
+    tags:["休闲", "模拟经营"],
+    price: 48,
+    rating: 9.8
+  },
+  {
+    id: "cuphead",
+    name: "茶杯头",
+    platforms: ["steam", "switch"],
+    type: "indie",
+    tags: ["魂类"],
+    price: 68,
+    rating: 9.7
+  },
+  {
+    id: "ygo-md",
+    name: "游戏王：大师决斗",
+    platforms: ["steam", "switch"],
+    type: "card game",
+    tags: ["卡牌", "策略"],
+    price: 0,
+    rating: 8.4
+  },
+  {
+    id: "warframe",
+    name: "星际战甲",
+    platforms: ["steam"],
+    type: "action",
+    tags: ["第三人称射击", "跑酷", "科幻", "刷刷刷"],
+    price: 0,
+    rating: 9.0
+  },
+  {
+    id: "dota-2",
+    name: "DOTA2",
+    platforms: ["steam"],
+    type: "strategy",
+    tags: ["策略", "多人联机"],
+    price: 0,
+    rating: 8.9
+  },
+  {
+    id: "fortnite",
+    name: "堡垒之夜",
+    platforms: ["ps", "switch"],
+    type: "shooter",
+    tags: ["吃鸡", "建造", "多人联机"],
+    price: 0,
+    rating: 8.1
+  },
+  {
+    id: "fall-guys",
+    name: "糖豆人",
+    platforms: ["steam", "ps", "switch"],
+    type: "party",
+    tags: ["休闲", "竞技", "多人乱斗"],
+    price: 0,
+    rating: 7.9
+  },
+  {
+    id: "team-fortress-2",
+    name: "绝地要塞2",
+    platforms: ["steam"],
+    type: "shooter",
+    tags: ["团队战", "FPS", "经典"],
+    price: 0,
+    rating: 8.8
+  },
+  {
+    id: "rocket-league",
+    name: "火箭联盟",
+    platforms: ["steam", "ps", "switch"],
+    type: "sports",
+    tags: ["多人联机", "竞技", "足球 + 赛车"],
+    price: 0,
+    rating: 8.7
+  },
+  {
+    id: "destiny-2",
+    name: "命运2",
+    platforms: ["steam", "ps"],
+    type: "shooter",
+    tags: ["FPS", "科幻", "合作"],
+    price: 0,
+    rating: 8.2
+  },
+  {
+    id: "paladins",
+    name: "枪火游侠",
+    platforms: ["steam", "ps", "switch"],
+    type: "shooter",
+    tags: ["英雄射击", "多人联机"],
+    price: 0,
+    rating: 7.8
+  },
+  {
+    id: "brawlhalla",
+    name: "乱斗英雄",
+    platforms: ["steam", "ps", "switch"],
+    type: "fighting",
+    tags: ["格斗", "多人对战", "休闲"],
+    price: 0,
+    rating: 8.3
+  },
+  {
+    id: "war-thunder",
+    name: "战争雷霆",
+    platforms: ["steam", "ps"],
+    type: "simulation",
+    tags: ["载具战斗", "军事", "多人联机"],
+    price: 0,
+    rating: 8.1
+  },
+  {
+    id: "path-of-exile",
+    name: "流放之路",
+    platforms: ["steam", "ps"],
+    type: "arpg",
+    tags: ["刷刷刷", "暗黑风", "深度养成"],
+    price: 0,
+    rating: 8.9
+  },
+  {
+    id: "pokemon-unite",
+    name: "宝可梦大集结",
+    platforms: ["switch"],
+    type: "moba",
+    tags: ["MOBA", "宝可梦", "团队竞技"],
+    price: 0,
+    rating: 8.0
+  },
+  {
+    id: "god-of-war",
+    name: "战神4",
+    platforms: ["steam", "ps"],
+    type: "action",
+    tags: ["剧情", "动作", "北欧神话"],
+    price: 39.99,
+    rating: 9.6
+  },
+  {
+    id: "zelda-totk",
+    name: "塞尔达传说：王国之泪",
+    platforms: ["switch"],
+    type: "adventure",
+    tags: ["开放世界", "解谜", "探索"],
+    price: 69.99,
+    rating: 9.8
+  },
+  {
+    id: "red-dead-redemption-2",
+    name: "荒野大镖客2",
+    platforms: ["steam", "ps"],
+    type: "action",
+    tags: ["开放世界", "西部", "剧情"],
+    price: 59.99,
+    rating: 9.7
+  },
+  {
+    id: "hades",
+    name: "黑帝斯",
+    platforms: ["steam", "switch", "ps"],
+    type: "roguelike",
+    tags: ["肉鸽", "动作", "独立游戏"],
+    price: 24.99,
+    rating: 9.0
+  },
+  {
+    id: "apex-legends",
+    name: "Apex Legends",
+    platforms: ["steam", "ps", "switch"],
+    type: "shooter",
+    tags: ["吃鸡", "多人联机", "FPS"],
+    price: 0,
+    rating: 8.6
+  },
+  {
+    id: "lol",
+    name: "英雄联盟",
+    platforms: ["pc"],
+    type: "multiplayer",
+    tags: ["MOBA", "联机", "免费"],
+    price: 0,
+    rating: 8.3
+  },
+  {
+    id: "slay-the-spire",
+    name: "杀戮尖塔",
+    platforms: ["steam", "switch", "mobile"],
+    type: "strategy",
+    tags: ["卡牌", "Roguelike", "独立"],
+    price: 80,
+    rating: 9.0
+  },
+  {
+    id: "lolm",
+    name: "英雄联盟手游",
+    platforms: ["mobile"],
+    type: "multiplayer",
+    tags: ["MOBA", "联机", "免费"],
+    price: 0,
+    rating: 8.3
+  },
+   {
+    id: "honor-king",
+    name: "王者荣耀",
+    platforms: ["mobile"],
+    type: "multiplayer",
+    tags: ["MOBA", "联机", "免费"],
+    price: 0,
+    rating: 5.9
+  },
+  {
+    id: "snap",
+    name: "漫威终极逆转",
+    platforms: ["steam", "mobile","pc"],
+    type: "card game",
+    tags: ["卡牌", "策略"],
+    price: 0,
+    rating: 7.6
+  },
+   {
+    id: "Arknights",
+    name: "明日方舟",
+    platforms: ["mobile"],
+    type: "card game",
+    tags: ["卡牌", "策略"],
+    price: 0,
+    rating: 9.0
+  },
+  {
+    id: "beng",
+    name: "崩坏三",
+    platforms: ["mobile","pc"],
+    type: "action",
+    tags: ["动作"],
+    price: 0,
+    rating: 8.0
+  },
+   {
+    id: "mc",
+    name: "我的世界",
+    platforms: ["mobile","pc"],
+    type: "rpg",
+    tags: ["角色扮演"],
+    price: 0,
+    rating: 8.0
+  },
+  ];
+
+  const libSearch = document.getElementById("libSearch");
+  const libType = document.getElementById("libType");
+  const libPrice = document.getElementById("libPrice");
+  const libPlatforms = document.getElementById("libPlatforms");
+  const libList = document.getElementById("libList");
+  const libResultCount = document.getElementById("libResultCount");
+  
+  gameData.forEach(g => {
+  g.cover = `../images/covers/${g.id}.jpg`;
+});
+  
+  function getSelectedPlatforms() {
+    return Array.from(libPlatforms.querySelectorAll("input[type=checkbox]:checked")).map(
+      (el) => el.value
+    );
+  }
+
+  function matchesFilters(game, keyword, type, price, platforms) {
+    const kw = keyword.trim().toLowerCase();
+    if (kw) {
+      const text = (game.name + " " + game.tags.join(" ")).toLowerCase();
+      if (!text.includes(kw)) return false;
+    }
+
+    if (type !== "all" && game.type !== type) return false;
+
+    if (platforms.length) {
+      const hit = game.platforms.some((p) => platforms.includes(p));
+      if (!hit) return false;
+    }
+
+    if (price === "free" && game.price !== 0) return false;
+    if (price === "low" && !(game.price > 0 && game.price <= 100)) return false;
+    if (price === "high" && !(game.price > 100)) return false;
+
+    return true;
+  }
+
+  function renderList() {
+    const keyword = libSearch.value;
+    const type = libType.value;
+    const price = libPrice.value;
+    const platforms = getSelectedPlatforms();
+
+    const filtered = gameData.filter((g) =>
+      matchesFilters(g, keyword, type, price, platforms)
+    );
+
+    libList.innerHTML = "";
+    libResultCount.textContent = `共 ${filtered.length} 款`;
+
+    if (!filtered.length) {
+      libList.innerHTML =
+        '<div style="font-size:12px;color:var(--text-muted);">没有找到符合条件的游戏，可以尝试放宽筛选条件。</div>';
+      return;
+    }
+
+    filtered.forEach((g) => {
+      const div = document.createElement("div");
+      div.className = "game-card";
+      div.innerHTML = `
+        <div class="game-cover" style="background-image: url('${g.cover}')"></div>
+        <div class="game-info">
+          <div class="game-name">${g.name}</div>
+          <div class="game-meta">
+            类型：${g.type.toUpperCase()} · 平台：${g.platforms.join("/")} · 评分：${g.rating.toFixed(
+        1
+      )}
+          </div>
+          <div class="game-footer">
+            ${
+              g.price === 0
+                ? '<span class="tag tag--accent">免费</span>'
+                : `<span class="tag">价格：¥${g.price}</span>`
+            }
+            ${g.tags.map((t) => `<span class="tag">${t}</span>`).join("")}
+          </div>
+        </div>
+      `;
+      div.addEventListener("click", () => {
+        if (g.id === "elden-ring") {
+          window.location.href = "game-detail.html";
+        }
+      });
+      libList.appendChild(div);
+    });
+  }
+
+  libSearch.addEventListener("input", renderList);
+  libType.addEventListener("change", renderList);
+  libPrice.addEventListener("change", renderList);
+  libPlatforms.addEventListener("change", renderList);
+
+  // 如果是从首页分类跳转而来，处理 URL 参数 cat
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get("cat");
+  if (cat) {
+    if (cat === "action" || cat === "rpg" || cat === "strategy" || cat === "indie" || cat === "multiplayer" || cat === "casual") {
+      libType.value = cat;
+    } else if (cat === "free") {
+      libPrice.value = "free";
+    }
+  }
+
+  renderList();
+</script>
+</body>
+</html>
