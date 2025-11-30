@@ -159,7 +159,7 @@ div>
   }
 
   // ==================== 关键修复：正确加载你的数组 JSON ====================
-  fetch("games-library-array.json")   // 确保文件名和你放的一样
+  fetch("games-library.json")   // 确保文件名和你放的一样
     .then(r => r.json())
     .then(data => {
       gameData = data;        // 直接赋值数组，不要 .games！
