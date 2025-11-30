@@ -6,85 +6,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="index.css" />
 </head>
-
 <body data-current-page="library">
 <div class="page">
   <header class="header">
-    <!-- 你原来的完整 header 保持 100% 不变 -->
-    ...（全部保留不变）
-  header>
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">G</div>
+        <div>
+          <div>GameBox 游盒</div>
+          <div class="logo-sub">LIGHTWEIGHT GAME HUB</div>
+        </div>
+      </a>
+
+      <nav class="nav-main">
+        <a href="index.html" data-page="home" class="nav-link">首页</a>
+        <a href="news-list.html" data-page="news" class="nav-link">资讯</a>
+        <a href="game-library.html" data-page="library" class="nav-link">游戏库</a>
+        <a href="ranking.html" data-page="ranking" class="nav-link">
+          排行榜 <span class="badge">HOT</span>
+        </a>
+        <a href="discount.html" data-page="discount" class="nav-link">折扣 / 史低</a>
+        <a href="community.html" data-page="community" class="nav-link">社区</a>
+        <a href="my-library.html" data-page="my" class="nav-link">我的游戏</a>
+        <a href="tools.html" data-page="tools" class="nav-link">工具中心</a>
+        <a href="profile.html" data-page="profile" class="nav-link">用户中心</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-search">
+          <input type="text" placeholder="搜索游戏 / 资讯 / 帖子" />
+          <span class="header-search-icon">Search</span>
+        </div>
+        <button class="header-user">未登录 · 游客</button>
+      </div>
+    </div>
+  </header>
 
   <main class="main">
     <section>
       <div class="card">
-        <div class="page-title">游戏库div>
+        <div class="page-title">游戏库</div>
         <div class="page-intro">
           通过名称、类型、平台和价格区间来筛选你感兴趣的游戏（示例数据）。
-        div>
-      div>
+        </div>
+      </div>
 
       <div class="card">
         <header class="card-header">
           <div class="card-title">
-            <span class="dot">span>
-            <span>筛选条件span>
-          div>
-        header>
+            <span class="dot"></span>
+            <span>筛选条件</span>
+          </div>
+        </header>
 
         <div class="form">
           <div class="form-row">
-            <label for="libSearch">按名称搜索label>
+            <label for="libSearch">按名称搜索</label>
             <input type="text" id="libSearch" placeholder="输入游戏名，如：艾尔登法环" />
-          div>
+          </div>
 
           <div class="form-row">
-            <label for="libType">类型label>
+            <label for="libType">类型</label>
             <select id="libType">
-              <option value="all">全部类型option>
-              <option value="开放世界">开放世界option>
-              <option value="动作">动作option>
-              <option value="回合制RPG">回合制RPGoption>
-              <option value="魂类">魂类option>
-              <option value="模拟经营">模拟经营option>
-              <option value="沙盒">沙盒option>
-              <option value="Roguelike">Roguelikeoption>
-              <option value="卡牌Roguelike">卡牌Roguelikeoption>
-              <!-- 根据你数据里实际出现的类型加了几个常用 -->
-            select>
-          div>
+              <option value="all">全部类型</option>
+              <option value="开放世界">开放世界</option>
+              <option value="动作">动作</option>
+              <option value="魂类">魂类</option>
+              <option value="回合制RPG">回合制RPG</option>
+              <option value="模拟经营">模拟经营</option>
+              <option value="沙盒">沙盒</option>
+              <option value="Roguelike">Roguelike</option>
+              <option value="卡牌Roguelike">卡牌Roguelike</option>
+              <option value="生存">生存</option>
+              <option value="策略">策略</option>
+            </select>
+          </div>
 
           <div class="form-row">
-            <label for="libPrice">价格区间label>
+            <label for="libPrice">价格区间</label>
             <select id="libPrice">
-              <option value="all">全部option>
-              <option value="free">免费 / F2Poption>
-              <option value="low">100 元以下option>
-              <option value="high">100 元以上option>
-            select>
-          div>
-        div>
-      div>
+              <option value="all">全部</option>
+              <option value="free">免费 / F2P</option>
+              <option value="low">100 元以下</option>
+              <option value="high">100 元以上</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
       <div class="card">
         <header class="card-header">
           <div class="card-title">
-            <span class="dot">span>
-            <span>筛选结果span>
-          div>
-          <div class="chip" id="libResultCount">共 0 款div>
-        header>
-        <div id="libList" class="game-list">div>
-      div>
-    section>
+            <span class="dot"></span>
+            <span>筛选结果</span>
+          </div>
+          <div class="chip" id="libResultCount">共 0 款</div>
+        </header>
+        <div id="libList" class="game-list"></div>
+      </div>
+    </section>
 
     <aside>
-      <!-- 你原来的侧边栏保持不变 -->
-      ...
-    aside>
-  main>
-div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">小提示</div>
+        <div class="sidebar-item">
+          <span class="label">可与首页分类联动</span>
+          <span class="value">支持</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="label">数据来源</span>
+          <span class="value">示例假数据</span>
+        </div>
+      </div>
+    </aside>
+  </main>
+</div>
 
-<script src="common.js">script>
+<script src="common.js"></script>
 <script>
   initCommon();
 
@@ -96,85 +134,80 @@ div>
   const libList   = document.getElementById("libList");
   const libResultCount = document.getElementById("libResultCount");
 
-  // 判断是否免费
-  function isFree(price) {
-    return price.includes("免费") || price === "买断"; // 逃离塔科夫那种也算免费试玩
-  }
-
-  // 提取价格数字，用于范围判断
-  function getPriceNum(price) {
-    if (isFree(price)) return 0;
-    const m = price.match(/¥(\d+)/);
-    return m ? parseInt(m[1]) : 99999;
-  }
-
   function renderList() {
-    let list = gameData;
+    let filtered = gameData;
 
     // 关键词搜索
-    const kw = libSearch.value.trim().toLowerCase();
+    const kw = libSearch.value.trim();
     if (kw) {
-      list = list.filter(g => g.name.toLowerCase().includes(kw) || g.description.toLowerCase().includes(kw));
+      filtered = filtered.filter(g =>
+        g.name.includes(kw) || g.description.includes(kw)
+      );
     }
 
     // 类型筛选
     if (libType.value !== "all") {
-      list = list.filter(g => g.type === libType.value);
+      filtered = filtered.filter(g => g.type === libType.value);
     }
 
     // 价格筛选
     if (libPrice.value === "free") {
-      list = list.filter(g => isFree(g.price));
+      filtered = filtered.filter(g => g.price.includes("免费"));
     } else if (libPrice.value === "low") {
-      list = list.filter(g => getPriceNum(g.price) > 0 && getPriceNum(g.price) <= 100);
+      filtered = filtered.filter(g => {
+        const match = g.price.match(/¥(\d+)/);
+        return match && parseInt(match[1]) <= 100;
+      });
     } else if (libPrice.value === "high") {
-      list = list.filter(g => getPriceNum(g.price) > 100);
+      filtered = filtered.filter(g => {
+        const match = g.price.match(/¥(\d+)/);
+        return match && parseInt(match[1]) > 100;
+      });
     }
 
-    libResultCount.textContent = `共 ${list.length} 款`;
+    libResultCount.textContent = `共 ${filtered.length} 款`;
     libList.innerHTML = "";
 
-    if (list.length === 0) {
-      libList.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted);">没有找到符合条件的游戏div>';
+    if (filtered.length === 0) {
+      libList.innerHTML = '<div style="text-align:center;padding:60px;color:#888;">没有找到符合条件的游戏</div>';
       return;
     }
 
-    list.forEach(g => {
+    filtered.forEach(game => {
       const div = document.createElement("div");
       div.className = "game-card";
 
       div.innerHTML = `
-        <div class="game-cover" style="background-image: url('${g.cover}')">div>
+        <div class="game-cover" style="background-image:url('${game.cover}')"></div>
         <div class="game-info">
-          <div class="game-name">${g.name}div>
+          <div class="game-name">${game.name}</div>
           <div class="game-meta">
-            ${g.type} • 评分 ${g.rating} • ${g.price}
-          div>
-          <div class="game-desc">${g.description}div>
-        div>
+            ${game.type} • 评分 ${game.rating} • ${game.price}
+          </div>
+          <div class="game-desc">${game.description}</div>
+        </div>
       `;
 
       libList.appendChild(div);
     });
   }
 
-  // ==================== 关键修复：正确加载你的数组 JSON ====================
-  fetch("games-library.json")   // 确保文件名和你放的一样
-    .then(r => r.json())
+  // 关键修复：你的 JSON 就是一个数组，不是 { games: [...] }
+  fetch("games-library.json")
+    .then(res => res.json())
     .then(data => {
-      gameData = data;        // 直接赋值数组，不要 .games！
-      renderList();           // 加载完立即渲染
+      gameData = data;        // 直接赋值数组
+      renderList();
     })
     .catch(err => {
       console.error(err);
-      libList.innerHTML = "加载游戏数据失败，请检查 games-library-array.json 是否存在";
+      libList.innerHTML = "<div style='color:red;padding:20px;'>加载失败：找不到 games-library-array.json</div>";
     });
 
-  // 监听筛选条件
+  // 筛选事件
   libSearch.addEventListener("input", renderList);
   libType.addEventListener("change", renderList);
   libPrice.addEventListener("change", renderList);
-script>
-
-body>
-html>
+</script>
+</body>
+</html>
