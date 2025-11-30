@@ -240,7 +240,7 @@
  fetch("games-library.json")
   .then(res => res.json())
   .then(data => {
-    gameData = data.games;  // ← 改这里
+    gameData = data;  // ← 改这里
     renderList();
   })
   .catch(err => {
