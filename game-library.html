@@ -100,7 +100,12 @@
             <span class="dot"></span>
             <span>筛选结果</span>
           </div>
-          <div class="chip" id="libResultCount">共 0 款</div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <div class="chip" id="libResultCount">共 0 款</div>
+            <div class="chip" id="liveIndicator" style="background: #10b981; color: white; animation: pulse 2s infinite;">
+              ● 实时数据
+            </div>
+          </div>
         </header>
         <div id="libList" class="game-list"></div>
       </div>
@@ -108,31 +113,91 @@
 
     <aside>
       <div class="sidebar-card">
-        <div class="sidebar-title">小提示</div>
+        <div class="sidebar-title">实时数据</div>
         <div class="sidebar-item">
-          <span class="label">可与首页分类联动</span>
-          <span class="value">支持</span>
+          <span class="label">在线玩家总数</span>
+          <span class="value" id="totalOnline">加载中...</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="label">折扣游戏</span>
+          <span class="value" id="discountCount">0 款</span>
+        </div>
+        <div class="sidebar-item">
+          <span class="label">更新频率</span>
+          <span class="value">每 30 秒</span>
         </div>
         <div class="sidebar-item">
           <span class="label">数据来源</span>
-          <span class="value">示例假数据</span>
+          <span class="value">模拟实时数据</span>
         </div>
       </div>
     </aside>
   </main>
 </div>
 
+<style>
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  .game-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+</style>
+
 <script src="common.js"></script>
 <script>
   initCommon();
 
   let gameData = [];
+  let updateInterval = null;
 
   const libSearch = document.getElementById("libSearch");
   const libType   = document.getElementById("libType");
   const libPrice  = document.getElementById("libPrice");
   const libList   = document.getElementById("libList");
   const libResultCount = document.getElementById("libResultCount");
+  const totalOnline = document.getElementById("totalOnline");
+  const discountCount = document.getElementById("discountCount");
+
+  // 格式化在线玩家数
+  function formatPlayers(num) {
+    if (!num) return '0';
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+    return num.toString();
+  }
+
+  // 获取趋势图标
+  function getTrendingIcon(trending) {
+    if (trending === 'hot') return '🔥';
+    if (trending === 'up') return '📈';
+    if (trending === 'down') return '📉';
+    return '➖';
+  }
+
+  // 更新统计信息
+  function updateStats() {
+    const total = gameData.reduce((sum, g) => sum + (g.onlinePlayers || 0), 0);
+    const discounts = gameData.filter(g => g.discount && g.discount > 0).length;
+    
+    if (totalOnline) {
+      totalOnline.textContent = formatPlayers(total);
+    }
+    if (discountCount) {
+      discountCount.textContent = `${discounts} 款`;
+    }
+  }
 
   function renderList() {
     let filtered = gameData;
@@ -177,6 +242,49 @@
       const div = document.createElement("div");
       div.className = "game-card";
 
+      // 构建实时数据显示
+      let liveDataHTML = '';
+      if (game.onlinePlayers !== undefined) {
+        liveDataHTML = `
+          <div style="margin-top: 8px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.9em;">
+            <span style="color: #10b981; font-weight: 500;">
+              👥 ${formatPlayers(game.onlinePlayers)} 在线
+            </span>
+        `;
+
+        // 显示价格和折扣
+        if (game.discount && game.discount > 0) {
+          liveDataHTML += `
+            <span style="color: #ef4444; font-weight: 500;">
+              💰 -${game.discount}% 折扣
+            </span>
+            <span style="text-decoration: line-through; color: #999;">
+              ¥${game.priceOriginal}
+            </span>
+            <span style="color: #10b981; font-weight: bold;">
+              ¥${game.priceNow}
+            </span>
+          `;
+        } else if (game.priceNow > 0) {
+          liveDataHTML += `
+            <span style="color: #666;">
+              💰 ¥${game.priceNow}
+            </span>
+          `;
+        }
+
+        // 显示趋势
+        if (game.trending) {
+          liveDataHTML += `
+            <span style="font-size: 1.2em;" title="${game.trending}">
+              ${getTrendingIcon(game.trending)}
+            </span>
+          `;
+        }
+
+        liveDataHTML += '</div>';
+      }
+
       div.innerHTML = `
         <div class="game-cover" style="background-image:url('${game.cover}')"></div>
         <div class="game-info">
@@ -185,6 +293,7 @@
             ${game.type} • 评分 ${game.rating} • ${game.price}
           </div>
           <div class="game-desc">${game.description}</div>
+          ${liveDataHTML}
         </div>
       `;
 
@@ -192,22 +301,82 @@
     });
   }
 
-  // 关键修复：你的 JSON 就是一个数组，不是 { games: [...] }
+  // 模拟实时数据更新
+  function simulateLiveUpdate() {
+    gameData.forEach(game => {
+      if (game.onlinePlayers !== undefined) {
+        // 在线玩家数随机波动 ±5%
+        const change = game.onlinePlayers * 0.05 * (Math.random() - 0.5);
+        game.onlinePlayers = Math.max(0, Math.round(game.onlinePlayers + change));
+        
+        // 随机更新趋势
+        const rand = Math.random();
+        if (rand > 0.95) {
+          game.trending = 'hot';
+        } else if (rand > 0.7) {
+          game.trending = 'up';
+        } else if (rand > 0.5) {
+          game.trending = 'down';
+        } else {
+          game.trending = 'stable';
+        }
+      }
+    });
+    
+    renderList();
+    updateStats();
+  }
+
+  // 加载游戏数据
   fetch("games-library.json")
     .then(res => res.json())
     .then(data => {
-      gameData = data;        // 直接赋值数组
+      gameData = data;
+      
+      // 为没有实时数据的游戏添加默认值
+      gameData.forEach(game => {
+        if (game.onlinePlayers === undefined) {
+          game.onlinePlayers = Math.floor(Math.random() * 500000);
+          
+          // 解析价格
+          const priceMatch = game.price.match(/¥(\d+)/);
+          if (priceMatch) {
+            game.priceOriginal = parseInt(priceMatch[1]);
+            game.priceNow = game.priceOriginal;
+            game.discount = 0;
+          } else {
+            game.priceOriginal = 0;
+            game.priceNow = 0;
+            game.discount = 0;
+          }
+          
+          // 随机趋势
+          const trends = ['up', 'down', 'stable', 'hot'];
+          game.trending = trends[Math.floor(Math.random() * trends.length)];
+        }
+      });
+      
       renderList();
+      updateStats();
+      
+      // 启动定时更新（30秒）
+      if (updateInterval) clearInterval(updateInterval);
+      updateInterval = setInterval(simulateLiveUpdate, 30000);
     })
     .catch(err => {
       console.error(err);
-      libList.innerHTML = "<div style='color:red;padding:20px;'>加载失败：找不到 games-library-array.json</div>";
+      libList.innerHTML = "<div style='color:red;padding:20px;'>加载失败：找不到 games-library.json</div>";
     });
 
   // 筛选事件
   libSearch.addEventListener("input", renderList);
   libType.addEventListener("change", renderList);
   libPrice.addEventListener("change", renderList);
+
+  // 清理定时器
+  window.addEventListener('beforeunload', () => {
+    if (updateInterval) clearInterval(updateInterval);
+  });
 </script>
 </body>
 </html>
