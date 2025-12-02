@@ -6,7 +6,7 @@
     "hotness": 9999,
     "type": "开放世界",
     "price": "免费内购",
-    "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20230922/1695352805_983846.jpg",
+    "cover": "https://picsum.photos/id/10/400/225",
     "description": "米哈游出品的超人气开放世界冒险",
     "onlinePlayers": 1285630,
     "priceOriginal": 0,
@@ -15,7 +15,11 @@
     "trending": "hot",
     "peakPlayers": 1500000,
     "averagePlayTime": 245,
-    "tags": ["开放世界", "二次元", "冒险"]
+    "tags": [
+      "开放世界",
+      "二次元",
+      "冒险"
+    ]
   },
   {
     "id": 2,
@@ -24,7 +28,7 @@
     "hotness": 9800,
     "type": "回合制RPG",
     "price": "免费内购",
-    "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20230425/1682428808_392346.jpg",
+    "cover": "https://picsum.photos/id/20/400/225",
     "description": "宇宙冒险的回合制新作",
     "onlinePlayers": 856420,
     "priceOriginal": 0,
@@ -33,7 +37,11 @@
     "trending": "up",
     "peakPlayers": 980000,
     "averagePlayTime": 180,
-    "tags": ["回合制", "RPG", "科幻"]
+    "tags": [
+      "回合制",
+      "RPG",
+      "科幻"
+    ]
   },
   {
     "id": 3,
@@ -42,7 +50,7 @@
     "hotness": 9600,
     "type": "动作",
     "price": "免费内购",
-    "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20240712/1720771207_951234.jpg",
+    "cover": "https://picsum.photos/id/30/400/225",
     "description": "米哈游最新都市动作大作",
     "onlinePlayers": 724380,
     "priceOriginal": 0,
@@ -51,7 +59,11 @@
     "trending": "up",
     "peakPlayers": 850000,
     "averagePlayTime": 120,
-    "tags": ["动作", "都市", "二次元"]
+    "tags": [
+      "动作",
+      "都市",
+      "二次元"
+    ]
   },
   {
     "id": 4,
@@ -60,7 +72,7 @@
     "hotness": 9999,
     "type": "动作RPG",
     "price": "¥268",
-    "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20240820/1724140809_987654.jpg",
+    "cover": "https://picsum.photos/id/40/400/225",
     "description": "国产3A巅峰之作",
     "onlinePlayers": 432890,
     "priceOriginal": 268,
@@ -69,7 +81,11 @@
     "trending": "hot",
     "peakPlayers": 650000,
     "averagePlayTime": 65,
-    "tags": ["国产", "动作", "神话"]
+    "tags": [
+      "国产",
+      "动作",
+      "神话"
+    ]
   },
   {
     "id": 5,
@@ -78,7 +94,7 @@
     "hotness": 9500,
     "type": "魂类",
     "price": "¥298",
-    "cover": "https://images.unsplash.com/photo-1622473596065-0d9e0e5c5b5e?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/50/400/225",
     "description": "宫崎英高最新神作",
     "onlinePlayers": 368540,
     "priceOriginal": 298,
@@ -87,7 +103,11 @@
     "trending": "up",
     "peakPlayers": 450000,
     "averagePlayTime": 95,
-    "tags": ["魂类", "开放世界", "硬核"]
+    "tags": [
+      "魂类",
+      "开放世界",
+      "硬核"
+    ]
   },
   {
     "id": 6,
@@ -96,7 +116,7 @@
     "hotness": 8800,
     "type": "开放世界",
     "price": "¥298",
-    "cover": "https://wallpaperaccess.com/full/3456789.jpg",
+    "cover": "https://picsum.photos/id/60/400/225",
     "description": "夜之城永不入眠",
     "onlinePlayers": 245680,
     "priceOriginal": 298,
@@ -105,7 +125,11 @@
     "trending": "up",
     "peakPlayers": 380000,
     "averagePlayTime": 78,
-    "tags": ["赛博朋克", "RPG", "科幻"]
+    "tags": [
+      "赛博朋克",
+      "RPG",
+      "科幻"
+    ]
   },
   {
     "id": 7,
@@ -114,7 +138,7 @@
     "hotness": 8700,
     "type": "开放世界",
     "price": "¥398",
-    "cover": "https://images.unsplash.com/photo-1631049307262-da0cd409f3d4?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/70/400/225",
     "description": "哈利波特魔法世界开放大作",
     "onlinePlayers": 198450,
     "priceOriginal": 398,
@@ -123,7 +147,11 @@
     "trending": "stable",
     "peakPlayers": 320000,
     "averagePlayTime": 52,
-    "tags": ["魔法", "冒险", "开放世界"]
+    "tags": [
+      "魔法",
+      "冒险",
+      "开放世界"
+    ]
   },
   {
     "id": 8,
@@ -132,7 +160,7 @@
     "hotness": 8200,
     "type": "模拟经营",
     "price": "¥48",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/80/400/225",
     "description": "最治愈的农场生活",
     "onlinePlayers": 156230,
     "priceOriginal": 48,
@@ -141,7 +169,11 @@
     "trending": "stable",
     "peakPlayers": 180000,
     "averagePlayTime": 320,
-    "tags": ["模拟", "休闲", "治愈"]
+    "tags": [
+      "模拟",
+      "休闲",
+      "治愈"
+    ]
   },
   {
     "id": 9,
@@ -150,7 +182,7 @@
     "hotness": 8600,
     "type": "合作冒险",
     "price": "¥198",
-    "cover": "https://images.unsplash.com/photo-1609905104336-d3ac0b30bd72?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/90/400/225",
     "description": "最佳合作游戏年度奖",
     "onlinePlayers": 134590,
     "priceOriginal": 198,
@@ -159,7 +191,11 @@
     "trending": "up",
     "peakPlayers": 170000,
     "averagePlayTime": 15,
-    "tags": ["合作", "冒险", "休闲"]
+    "tags": [
+      "合作",
+      "冒险",
+      "休闲"
+    ]
   },
   {
     "id": 10,
@@ -168,7 +204,7 @@
     "hotness": 8300,
     "type": "动作",
     "price": "¥268",
-    "cover": "https://wallpaperaccess.com/full/5678901.jpg",
+    "cover": "https://picsum.photos/id/100/400/225",
     "description": "一死一生，乃忍者",
     "onlinePlayers": 89670,
     "priceOriginal": 268,
@@ -177,7 +213,11 @@
     "trending": "stable",
     "peakPlayers": 120000,
     "averagePlayTime": 45,
-    "tags": ["动作", "魂类", "日本"]
+    "tags": [
+      "动作",
+      "魂类",
+      "日本"
+    ]
   },
   {
     "id": 11,
@@ -186,7 +226,7 @@
     "hotness": 9200,
     "type": "开放世界",
     "price": "¥149",
-    "cover": "https://wallpaperaccess.com/full/6789012.jpg",
+    "cover": "https://picsum.photos/id/110/400/225",
     "description": "洛圣都永不过时",
     "onlinePlayers": 567890,
     "priceOriginal": 149,
@@ -195,7 +235,11 @@
     "trending": "hot",
     "peakPlayers": 750000,
     "averagePlayTime": 450,
-    "tags": ["开放世界", "犯罪", "多人"]
+    "tags": [
+      "开放世界",
+      "犯罪",
+      "多人"
+    ]
   },
   {
     "id": 12,
@@ -204,7 +248,7 @@
     "hotness": 9400,
     "type": "开放世界",
     "price": "¥249",
-    "cover": "https://images.unsplash.com/photo-1612287232495-4f7e7d4367c6?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/120/400/225",
     "description": "西部史诗巅峰",
     "onlinePlayers": 298760,
     "priceOriginal": 249,
@@ -213,7 +257,11 @@
     "trending": "up",
     "peakPlayers": 380000,
     "averagePlayTime": 120,
-    "tags": ["西部", "开放世界", "史诗"]
+    "tags": [
+      "西部",
+      "开放世界",
+      "史诗"
+    ]
   },
   {
     "id": 13,
@@ -222,7 +270,7 @@
     "hotness": 9900,
     "type": "开放世界",
     "price": "¥429",
-    "cover": "https://fs-prod-cdn.nintendo-europe.com/media/images/10_square_images/games_18/nintendo_switch_5/square_1600x1600_1_2x_7.jpg",
+    "cover": "https://picsum.photos/id/130/400/225",
     "description": "任天堂神级续作",
     "onlinePlayers": 445670,
     "priceOriginal": 429,
@@ -231,7 +279,11 @@
     "trending": "hot",
     "peakPlayers": 520000,
     "averagePlayTime": 85,
-    "tags": ["任天堂", "冒险", "解谜"]
+    "tags": [
+      "任天堂",
+      "冒险",
+      "解谜"
+    ]
   },
   {
     "id": 14,
@@ -240,7 +292,7 @@
     "hotness": 9100,
     "type": "开放世界",
     "price": "¥429",
-    "cover": "https://fs-prod-cdn.nintendo-europe.com/media/images/10_square_images/games_18/nintendo_switch_5/square_1600x1600_1_2x_3.jpg",
+    "cover": "https://picsum.photos/id/140/400/225",
     "description": "重新定义开放世界",
     "onlinePlayers": 278340,
     "priceOriginal": 429,
@@ -249,7 +301,11 @@
     "trending": "stable",
     "peakPlayers": 350000,
     "averagePlayTime": 95,
-    "tags": ["任天堂", "冒险", "开放世界"]
+    "tags": [
+      "任天堂",
+      "冒险",
+      "开放世界"
+    ]
   },
   {
     "id": 15,
@@ -258,7 +314,7 @@
     "hotness": 9000,
     "type": "动作冒险",
     "price": "¥398",
-    "cover": "https://images.unsplash.com/photo-1611996575749-79a3ae8f1e2a?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/150/400/225",
     "description": "人性与生存的极致演绎",
     "onlinePlayers": 167890,
     "priceOriginal": 398,
@@ -267,7 +323,11 @@
     "trending": "stable",
     "peakPlayers": 220000,
     "averagePlayTime": 18,
-    "tags": ["剧情", "生存", "第三人称"]
+    "tags": [
+      "剧情",
+      "生存",
+      "第三人称"
+    ]
   },
   {
     "id": 16,
@@ -276,7 +336,7 @@
     "hotness": 8800,
     "type": "开放世界",
     "price": "¥398",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/160/400/225",
     "description": "最美武士开放世界",
     "onlinePlayers": 145670,
     "priceOriginal": 398,
@@ -285,7 +345,11 @@
     "trending": "up",
     "peakPlayers": 200000,
     "averagePlayTime": 35,
-    "tags": ["武士", "日本", "动作"]
+    "tags": [
+      "武士",
+      "日本",
+      "动作"
+    ]
   },
   {
     "id": 17,
@@ -294,7 +358,7 @@
     "hotness": 9300,
     "type": "动作冒险",
     "price": "¥429",
-    "cover": "https://wallpaperaccess.com/full/8901234.jpg",
+    "cover": "https://picsum.photos/id/170/400/225",
     "description": "奎托斯北欧终章",
     "onlinePlayers": 234560,
     "priceOriginal": 429,
@@ -303,7 +367,11 @@
     "trending": "hot",
     "peakPlayers": 310000,
     "averagePlayTime": 32,
-    "tags": ["北欧神话", "动作", "剧情"]
+    "tags": [
+      "北欧神话",
+      "动作",
+      "剧情"
+    ]
   },
   {
     "id": 18,
@@ -312,7 +380,7 @@
     "hotness": 9200,
     "type": "生存恐怖",
     "price": "¥398",
-    "cover": "https://wallpaperaccess.com/full/9012345.jpg",
+    "cover": "https://picsum.photos/id/180/400/225",
     "description": "恐怖动作天花板",
     "onlinePlayers": 178950,
     "priceOriginal": 398,
@@ -321,7 +389,11 @@
     "trending": "up",
     "peakPlayers": 250000,
     "averagePlayTime": 22,
-    "tags": ["恐怖", "射击", "生存"]
+    "tags": [
+      "恐怖",
+      "射击",
+      "生存"
+    ]
   },
   {
     "id": 19,
@@ -330,7 +402,7 @@
     "hotness": 6800,
     "type": "开放世界",
     "price": "¥298",
-    "cover": "https://images.unsplash.com/photo-1609905104336-d3ac0b30bd72?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/190/400/225",
     "description": "小岛秀夫的快递模拟器",
     "onlinePlayers": 67890,
     "priceOriginal": 298,
@@ -339,7 +411,11 @@
     "trending": "stable",
     "peakPlayers": 95000,
     "averagePlayTime": 45,
-    "tags": ["独特", "剧情", "探索"]
+    "tags": [
+      "独特",
+      "剧情",
+      "探索"
+    ]
   },
   {
     "id": 20,
@@ -348,7 +424,7 @@
     "hotness": 7900,
     "type": "Roguelike",
     "price": "¥80",
-    "cover": "https://wallpaperaccess.com/full/0123456.jpg",
+    "cover": "https://picsum.photos/id/200/400/225",
     "description": "希腊神话刷刷刷神作",
     "onlinePlayers": 98450,
     "priceOriginal": 80,
@@ -357,7 +433,11 @@
     "trending": "up",
     "peakPlayers": 130000,
     "averagePlayTime": 55,
-    "tags": ["Roguelike", "神话", "独立"]
+    "tags": [
+      "Roguelike",
+      "神话",
+      "独立"
+    ]
   },
   {
     "id": 21,
@@ -366,7 +446,7 @@
     "hotness": 8100,
     "type": "类银河恶魔城",
     "price": "¥48",
-    "cover": "https://wallpaperaccess.com/full/1234567.jpg",
+    "cover": "https://picsum.photos/id/210/400/225",
     "description": "独立游戏天花板",
     "onlinePlayers": 87650,
     "priceOriginal": 48,
@@ -375,7 +455,11 @@
     "trending": "stable",
     "peakPlayers": 110000,
     "averagePlayTime": 35,
-    "tags": ["类银河恶魔城", "独立", "硬核"]
+    "tags": [
+      "类银河恶魔城",
+      "独立",
+      "硬核"
+    ]
   },
   {
     "id": 22,
@@ -384,7 +468,7 @@
     "hotness": 7200,
     "type": "横版射击",
     "price": "¥68",
-    "cover": "https://images.unsplash.com/photo-1631049307262-da0cd409f3d4?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/220/400/225",
     "description": "1930年代动画风硬核跑枪",
     "onlinePlayers": 56780,
     "priceOriginal": 68,
@@ -393,7 +477,11 @@
     "trending": "stable",
     "peakPlayers": 75000,
     "averagePlayTime": 12,
-    "tags": ["射击", "复古", "硬核"]
+    "tags": [
+      "射击",
+      "复古",
+      "硬核"
+    ]
   },
   {
     "id": 23,
@@ -402,7 +490,7 @@
     "hotness": 7600,
     "type": "平台动作",
     "price": "¥98",
-    "cover": "https://wallpaperaccess.com/full/2345678.jpg",
+    "cover": "https://picsum.photos/id/230/400/225",
     "description": "最美画风平台游戏",
     "onlinePlayers": 67890,
     "priceOriginal": 98,
@@ -411,7 +499,11 @@
     "trending": "up",
     "peakPlayers": 90000,
     "averagePlayTime": 15,
-    "tags": ["平台", "冒险", "唯美"]
+    "tags": [
+      "平台",
+      "冒险",
+      "唯美"
+    ]
   },
   {
     "id": 24,
@@ -420,7 +512,7 @@
     "hotness": 7800,
     "type": "沙盒",
     "price": "¥38",
-    "cover": "https://images.unsplash.com/photo-1622473596065-0d9e0e5c5b5e?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/240/400/225",
     "description": "2D版我的世界",
     "onlinePlayers": 234560,
     "priceOriginal": 38,
@@ -429,7 +521,11 @@
     "trending": "hot",
     "peakPlayers": 310000,
     "averagePlayTime": 450,
-    "tags": ["沙盒", "建造", "冒险"]
+    "tags": [
+      "沙盒",
+      "建造",
+      "冒险"
+    ]
   },
   {
     "id": 25,
@@ -438,7 +534,7 @@
     "hotness": 9500,
     "type": "沙盒",
     "price": "¥165",
-    "cover": "https://www.minecraft.net/content/dam/collectibles/minecraft-collectibles-wallpaper-1.jpg",
+    "cover": "https://picsum.photos/id/250/400/225",
     "description": "方块宇宙的创造之神",
     "onlinePlayers": 982345,
     "priceOriginal": 165,
@@ -447,7 +543,11 @@
     "trending": "hot",
     "peakPlayers": 1200000,
     "averagePlayTime": 800,
-    "tags": ["沙盒", "创造", "多人"]
+    "tags": [
+      "沙盒",
+      "创造",
+      "多人"
+    ]
   },
   {
     "id": 26,
@@ -456,7 +556,7 @@
     "hotness": 8200,
     "type": "动作狩猎",
     "price": "¥398",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/260/400/225",
     "description": "狩猎生活再次启程",
     "onlinePlayers": 167890,
     "priceOriginal": 398,
@@ -465,7 +565,11 @@
     "trending": "up",
     "peakPlayers": 220000,
     "averagePlayTime": 95,
-    "tags": ["狩猎", "动作", "多人"]
+    "tags": [
+      "狩猎",
+      "动作",
+      "多人"
+    ]
   },
   {
     "id": 27,
@@ -474,7 +578,7 @@
     "hotness": 7800,
     "type": "动作狩猎",
     "price": "¥298",
-    "cover": "https://wallpaperaccess.com/full/5678901.jpg",
+    "cover": "https://picsum.photos/id/270/400/225",
     "description": "次世代狩猎体验",
     "onlinePlayers": 145670,
     "priceOriginal": 298,
@@ -483,7 +587,11 @@
     "trending": "stable",
     "peakPlayers": 200000,
     "averagePlayTime": 120,
-    "tags": ["狩猎", "多人", "动作"]
+    "tags": [
+      "狩猎",
+      "多人",
+      "动作"
+    ]
   },
   {
     "id": 28,
@@ -492,7 +600,7 @@
     "hotness": 9100,
     "type": "大逃杀",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/6789012.jpg",
+    "cover": "https://picsum.photos/id/280/400/225",
     "description": "英雄射击大逃杀",
     "onlinePlayers": 645820,
     "priceOriginal": 0,
@@ -501,7 +609,11 @@
     "trending": "up",
     "peakPlayers": 780000,
     "averagePlayTime": 350,
-    "tags": ["射击", "大逃杀", "多人"]
+    "tags": [
+      "射击",
+      "大逃杀",
+      "多人"
+    ]
   },
   {
     "id": 29,
@@ -510,7 +622,7 @@
     "hotness": 8900,
     "type": "竞技射击",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/290/400/225",
     "description": "拳头出品的5V5战术射击",
     "onlinePlayers": 876540,
     "priceOriginal": 0,
@@ -519,7 +631,11 @@
     "trending": "hot",
     "peakPlayers": 1050000,
     "averagePlayTime": 420,
-    "tags": ["射击", "竞技", "战术"]
+    "tags": [
+      "射击",
+      "竞技",
+      "战术"
+    ]
   },
   {
     "id": 30,
@@ -528,7 +644,7 @@
     "hotness": 9300,
     "type": "竞技射击",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/8901234.jpg",
+    "cover": "https://picsum.photos/id/300/400/225",
     "description": "经典反恐精英回归",
     "onlinePlayers": 1456780,
     "priceOriginal": 0,
@@ -537,7 +653,11 @@
     "trending": "hot",
     "peakPlayers": 1750000,
     "averagePlayTime": 550,
-    "tags": ["射击", "竞技", "经典"]
+    "tags": [
+      "射击",
+      "竞技",
+      "经典"
+    ]
   },
   {
     "id": 31,
@@ -546,7 +666,7 @@
     "hotness": 7800,
     "type": "战术射击",
     "price": "¥88",
-    "cover": "https://wallpaperaccess.com/full/9012345.jpg",
+    "cover": "https://picsum.photos/id/310/400/225",
     "description": "最硬核的战术竞技",
     "onlinePlayers": 234560,
     "priceOriginal": 88,
@@ -555,7 +675,11 @@
     "trending": "stable",
     "peakPlayers": 280000,
     "averagePlayTime": 380,
-    "tags": ["战术", "射击", "多人"]
+    "tags": [
+      "战术",
+      "射击",
+      "多人"
+    ]
   },
   {
     "id": 32,
@@ -564,7 +688,7 @@
     "hotness": 8200,
     "type": "硬核射击",
     "price": "¥268",
-    "cover": "https://wallpaperaccess.com/full/0123456.jpg",
+    "cover": "https://picsum.photos/id/320/400/225",
     "description": "真实到让人窒息",
     "onlinePlayers": 178900,
     "priceOriginal": 268,
@@ -573,7 +697,11 @@
     "trending": "up",
     "peakPlayers": 220000,
     "averagePlayTime": 290,
-    "tags": ["硬核", "射击", "生存"]
+    "tags": [
+      "硬核",
+      "射击",
+      "生存"
+    ]
   },
   {
     "id": 33,
@@ -582,7 +710,7 @@
     "hotness": 8500,
     "type": "动作竞技",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/1234567.jpg",
+    "cover": "https://picsum.photos/id/330/400/225",
     "description": "国产武侠大逃杀",
     "onlinePlayers": 456780,
     "priceOriginal": 0,
@@ -591,7 +719,11 @@
     "trending": "up",
     "peakPlayers": 550000,
     "averagePlayTime": 180,
-    "tags": ["武侠", "大逃杀", "国产"]
+    "tags": [
+      "武侠",
+      "大逃杀",
+      "国产"
+    ]
   },
   {
     "id": 34,
@@ -600,7 +732,7 @@
     "hotness": 6800,
     "type": "非对称竞技",
     "price": "免费内购",
-    "cover": "https://images.unsplash.com/photo-1622473596065-0d9e0e5c5b5e?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/340/400/225",
     "description": "庄园里的猫鼠游戏",
     "onlinePlayers": 567890,
     "priceOriginal": 0,
@@ -609,7 +741,11 @@
     "trending": "stable",
     "peakPlayers": 680000,
     "averagePlayTime": 220,
-    "tags": ["非对称", "恐怖", "多人"]
+    "tags": [
+      "非对称",
+      "恐怖",
+      "多人"
+    ]
   },
   {
     "id": 35,
@@ -618,7 +754,7 @@
     "hotness": 7900,
     "type": "休闲竞技",
     "price": "免费内购",
-    "cover": "https://wallpaperaccess.com/full/3456789.jpg",
+    "cover": "https://picsum.photos/id/350/400/225",
     "description": "国内最火的派对游戏",
     "onlinePlayers": 789012,
     "priceOriginal": 0,
@@ -627,7 +763,11 @@
     "trending": "hot",
     "peakPlayers": 950000,
     "averagePlayTime": 150,
-    "tags": ["休闲", "派对", "可爱"]
+    "tags": [
+      "休闲",
+      "派对",
+      "可爱"
+    ]
   },
   {
     "id": 36,
@@ -636,7 +776,7 @@
     "hotness": 7200,
     "type": "休闲竞技",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/360/400/225",
     "description": "可爱到犯规的淘汰赛",
     "onlinePlayers": 345678,
     "priceOriginal": 0,
@@ -645,7 +785,11 @@
     "trending": "stable",
     "peakPlayers": 420000,
     "averagePlayTime": 90,
-    "tags": ["休闲", "派对", "可爱"]
+    "tags": [
+      "休闲",
+      "派对",
+      "可爱"
+    ]
   },
   {
     "id": 37,
@@ -654,7 +798,7 @@
     "hotness": 7800,
     "type": "社交推理",
     "price": "¥18",
-    "cover": "https://wallpaperaccess.com/full/5678901.jpg",
+    "cover": "https://picsum.photos/id/370/400/225",
     "description": "背刺朋友的艺术",
     "onlinePlayers": 234567,
     "priceOriginal": 18,
@@ -663,7 +807,11 @@
     "trending": "stable",
     "peakPlayers": 300000,
     "averagePlayTime": 60,
-    "tags": ["社交", "推理", "派对"]
+    "tags": [
+      "社交",
+      "推理",
+      "派对"
+    ]
   },
   {
     "id": 38,
@@ -672,7 +820,7 @@
     "hotness": 7500,
     "type": "合作恐怖",
     "price": "¥48",
-    "cover": "https://wallpaperaccess.com/full/6789012.jpg",
+    "cover": "https://picsum.photos/id/380/400/225",
     "description": "四人组队抓鬼",
     "onlinePlayers": 167890,
     "priceOriginal": 48,
@@ -681,7 +829,11 @@
     "trending": "up",
     "peakPlayers": 210000,
     "averagePlayTime": 75,
-    "tags": ["恐怖", "合作", "多人"]
+    "tags": [
+      "恐怖",
+      "合作",
+      "多人"
+    ]
   },
   {
     "id": 39,
@@ -690,7 +842,7 @@
     "hotness": 6800,
     "type": "策略",
     "price": "¥199",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/390/400/225",
     "description": "一回合又一回合",
     "onlinePlayers": 123456,
     "priceOriginal": 199,
@@ -699,7 +851,11 @@
     "trending": "stable",
     "peakPlayers": 160000,
     "averagePlayTime": 520,
-    "tags": ["策略", "回合制", "历史"]
+    "tags": [
+      "策略",
+      "回合制",
+      "历史"
+    ]
   },
   {
     "id": 40,
@@ -708,7 +864,7 @@
     "hotness": 6500,
     "type": "策略",
     "price": "¥268",
-    "cover": "https://wallpaperaccess.com/full/8901234.jpg",
+    "cover": "https://picsum.photos/id/400/400/225",
     "description": "英雄集结",
     "onlinePlayers": 98765,
     "priceOriginal": 268,
@@ -717,7 +873,11 @@
     "trending": "stable",
     "peakPlayers": 130000,
     "averagePlayTime": 180,
-    "tags": ["策略", "三国", "历史"]
+    "tags": [
+      "策略",
+      "三国",
+      "历史"
+    ]
   },
   {
     "id": 41,
@@ -726,7 +886,7 @@
     "hotness": 7100,
     "type": "模拟驾驶",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/9012345.jpg",
+    "cover": "https://picsum.photos/id/410/400/225",
     "description": "最真实的卡车人生",
     "onlinePlayers": 189012,
     "priceOriginal": 68,
@@ -735,7 +895,11 @@
     "trending": "stable",
     "peakPlayers": 230000,
     "averagePlayTime": 680,
-    "tags": ["模拟", "驾驶", "真实"]
+    "tags": [
+      "模拟",
+      "驾驶",
+      "真实"
+    ]
   },
   {
     "id": 42,
@@ -744,7 +908,7 @@
     "hotness": 7300,
     "type": "飞行模拟",
     "price": "¥398",
-    "cover": "https://images.unsplash.com/photo-1611996575749-79a3ae8f1e2a?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/420/400/225",
     "description": "真实到起飞",
     "onlinePlayers": 145678,
     "priceOriginal": 398,
@@ -753,7 +917,11 @@
     "trending": "up",
     "peakPlayers": 180000,
     "averagePlayTime": 420,
-    "tags": ["模拟", "飞行", "真实"]
+    "tags": [
+      "模拟",
+      "飞行",
+      "真实"
+    ]
   },
   {
     "id": 43,
@@ -762,7 +930,7 @@
     "hotness": 6200,
     "type": "模拟经营",
     "price": "¥128",
-    "cover": "https://wallpaperaccess.com/full/0123456.jpg",
+    "cover": "https://picsum.photos/id/430/400/225",
     "description": "治病救人也要搞笑",
     "onlinePlayers": 78901,
     "priceOriginal": 128,
@@ -771,7 +939,11 @@
     "trending": "stable",
     "peakPlayers": 95000,
     "averagePlayTime": 145,
-    "tags": ["模拟", "经营", "幽默"]
+    "tags": [
+      "模拟",
+      "经营",
+      "幽默"
+    ]
   },
   {
     "id": 44,
@@ -780,7 +952,7 @@
     "hotness": 7800,
     "type": "生活模拟",
     "price": "¥429",
-    "cover": "https://www.nintendo.com/tw/switch/animal_crossing_new_horizons/images/key.jpg",
+    "cover": "https://picsum.photos/id/440/400/225",
     "description": "疫情期间最治愈游戏",
     "onlinePlayers": 456789,
     "priceOriginal": 429,
@@ -789,7 +961,11 @@
     "trending": "stable",
     "peakPlayers": 580000,
     "averagePlayTime": 380,
-    "tags": ["治愈", "休闲", "任天堂"]
+    "tags": [
+      "治愈",
+      "休闲",
+      "任天堂"
+    ]
   },
   {
     "id": 45,
@@ -798,7 +974,7 @@
     "hotness": 7400,
     "type": "射击竞技",
     "price": "¥429",
-    "cover": "https://www.nintendo.com/hk/switch/av5ja/images/key.jpg",
+    "cover": "https://picsum.photos/id/450/400/225",
     "description": "涂地最强",
     "onlinePlayers": 389012,
     "priceOriginal": 429,
@@ -807,7 +983,11 @@
     "trending": "up",
     "peakPlayers": 480000,
     "averagePlayTime": 260,
-    "tags": ["射击", "任天堂", "多人"]
+    "tags": [
+      "射击",
+      "任天堂",
+      "多人"
+    ]
   },
   {
     "id": 46,
@@ -816,7 +996,7 @@
     "hotness": 7600,
     "type": "赛车",
     "price": "¥429",
-    "cover": "https://www.nintendo.com/hk/switch/mario_kart_8_deluxe/images/key.jpg",
+    "cover": "https://picsum.photos/id/460/400/225",
     "description": "任天堂最佳派对赛车",
     "onlinePlayers": 567890,
     "priceOriginal": 429,
@@ -825,7 +1005,11 @@
     "trending": "hot",
     "peakPlayers": 680000,
     "averagePlayTime": 320,
-    "tags": ["赛车", "派对", "任天堂"]
+    "tags": [
+      "赛车",
+      "派对",
+      "任天堂"
+    ]
   },
   {
     "id": 47,
@@ -834,7 +1018,7 @@
     "hotness": 7500,
     "type": "格斗",
     "price": "¥429",
-    "cover": "https://www.nintendo.com/hk/switch/super_smash_bros_ultimate/images/key.jpg",
+    "cover": "https://picsum.photos/id/470/400/225",
     "description": "全明星跨界乱斗",
     "onlinePlayers": 445678,
     "priceOriginal": 429,
@@ -843,7 +1027,11 @@
     "trending": "stable",
     "peakPlayers": 550000,
     "averagePlayTime": 280,
-    "tags": ["格斗", "派对", "任天堂"]
+    "tags": [
+      "格斗",
+      "派对",
+      "任天堂"
+    ]
   },
   {
     "id": 48,
@@ -852,7 +1040,7 @@
     "hotness": 7200,
     "type": "Roguelike",
     "price": "¥80",
-    "cover": "https://images.unsplash.com/photo-1611996575749-79a3ae8f1e2a?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/480/400/225",
     "description": "死一次就懂",
     "onlinePlayers": 123456,
     "priceOriginal": 80,
@@ -861,7 +1049,11 @@
     "trending": "stable",
     "peakPlayers": 150000,
     "averagePlayTime": 65,
-    "tags": ["Roguelike", "动作", "独立"]
+    "tags": [
+      "Roguelike",
+      "动作",
+      "独立"
+    ]
   },
   {
     "id": 49,
@@ -870,7 +1062,7 @@
     "hotness": 6800,
     "type": "平台动作",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/2345678.jpg",
+    "cover": "https://picsum.photos/id/490/400/225",
     "description": "初代奥日",
     "onlinePlayers": 56789,
     "priceOriginal": 68,
@@ -879,7 +1071,11 @@
     "trending": "stable",
     "peakPlayers": 75000,
     "averagePlayTime": 12,
-    "tags": ["平台", "冒险", "唯美"]
+    "tags": [
+      "平台",
+      "冒险",
+      "唯美"
+    ]
   },
   {
     "id": 50,
@@ -888,7 +1084,7 @@
     "hotness": 6500,
     "type": "艺术冒险",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/3456789.jpg",
+    "cover": "https://picsum.photos/id/500/400/225",
     "description": "最短却最美的游戏",
     "onlinePlayers": 45678,
     "priceOriginal": 68,
@@ -897,7 +1093,11 @@
     "trending": "stable",
     "peakPlayers": 62000,
     "averagePlayTime": 3,
-    "tags": ["艺术", "冒险", "独立"]
+    "tags": [
+      "艺术",
+      "冒险",
+      "独立"
+    ]
   },
   {
     "id": 51,
@@ -906,7 +1106,7 @@
     "hotness": 6600,
     "type": "解谜平台",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/510/400/225",
     "description": "Limbo精神续作",
     "onlinePlayers": 67890,
     "priceOriginal": 68,
@@ -915,7 +1115,11 @@
     "trending": "stable",
     "peakPlayers": 85000,
     "averagePlayTime": 4,
-    "tags": ["解谜", "恐怖", "独立"]
+    "tags": [
+      "解谜",
+      "恐怖",
+      "独立"
+    ]
   },
   {
     "id": 52,
@@ -924,7 +1128,7 @@
     "hotness": 6200,
     "type": "解谜平台",
     "price": "¥38",
-    "cover": "https://wallpaperaccess.com/full/5678901.jpg",
+    "cover": "https://picsum.photos/id/520/400/225",
     "description": "黑白恐怖童话",
     "onlinePlayers": 45678,
     "priceOriginal": 38,
@@ -933,7 +1137,11 @@
     "trending": "stable",
     "peakPlayers": 58000,
     "averagePlayTime": 3,
-    "tags": ["解谜", "黑白", "恐怖"]
+    "tags": [
+      "解谜",
+      "黑白",
+      "恐怖"
+    ]
   },
   {
     "id": 53,
@@ -942,7 +1150,7 @@
     "hotness": 7900,
     "type": "RPG",
     "price": "¥38",
-    "cover": "https://wallpaperaccess.com/full/6789012.jpg",
+    "cover": "https://picsum.photos/id/530/400/225",
     "description": "你真的舍得打吗",
     "onlinePlayers": 156789,
     "priceOriginal": 38,
@@ -951,7 +1159,11 @@
     "trending": "stable",
     "peakPlayers": 195000,
     "averagePlayTime": 8,
-    "tags": ["RPG", "剧情", "独立"]
+    "tags": [
+      "RPG",
+      "剧情",
+      "独立"
+    ]
   },
   {
     "id": 54,
@@ -960,7 +1172,7 @@
     "hotness": 7700,
     "type": "平台动作",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/540/400/225",
     "description": "硬核跳跃治抑郁",
     "onlinePlayers": 98765,
     "priceOriginal": 68,
@@ -969,7 +1181,11 @@
     "trending": "stable",
     "peakPlayers": 125000,
     "averagePlayTime": 15,
-    "tags": ["平台", "硬核", "感人"]
+    "tags": [
+      "平台",
+      "硬核",
+      "感人"
+    ]
   },
   {
     "id": 55,
@@ -978,7 +1194,7 @@
     "hotness": 6800,
     "type": "解谜",
     "price": "¥48",
-    "cover": "https://wallpaperaccess.com/full/8901234.jpg",
+    "cover": "https://picsum.photos/id/550/400/225",
     "description": "改变规则的解谜神作",
     "onlinePlayers": 45678,
     "priceOriginal": 48,
@@ -987,7 +1203,11 @@
     "trending": "stable",
     "peakPlayers": 58000,
     "averagePlayTime": 20,
-    "tags": ["解谜", "创新", "独立"]
+    "tags": [
+      "解谜",
+      "创新",
+      "独立"
+    ]
   },
   {
     "id": 56,
@@ -996,7 +1216,7 @@
     "hotness": 8100,
     "type": "卡牌Roguelike",
     "price": "¥80",
-    "cover": "https://wallpaperaccess.com/full/9012345.jpg",
+    "cover": "https://picsum.photos/id/560/400/225",
     "description": "卡牌爬塔天花板",
     "onlinePlayers": 189012,
     "priceOriginal": 80,
@@ -1005,7 +1225,11 @@
     "trending": "up",
     "peakPlayers": 235000,
     "averagePlayTime": 95,
-    "tags": ["卡牌", "Roguelike", "策略"]
+    "tags": [
+      "卡牌",
+      "Roguelike",
+      "策略"
+    ]
   },
   {
     "id": 57,
@@ -1014,7 +1238,7 @@
     "hotness": 7800,
     "type": "开放世界RPG",
     "price": "¥398",
-    "cover": "https://wallpaperaccess.com/full/1234567.jpg",
+    "cover": "https://picsum.photos/id/570/400/225",
     "description": "贝塞斯达宇宙冒险",
     "onlinePlayers": 256789,
     "priceOriginal": 398,
@@ -1023,7 +1247,11 @@
     "trending": "stable",
     "peakPlayers": 320000,
     "averagePlayTime": 85,
-    "tags": ["科幻", "RPG", "探索"]
+    "tags": [
+      "科幻",
+      "RPG",
+      "探索"
+    ]
   },
   {
     "id": 58,
@@ -1032,7 +1260,7 @@
     "hotness": 9500,
     "type": "CRPG",
     "price": "¥298",
-    "cover": "https://wallpaperaccess.com/full/2345678.jpg",
+    "cover": "https://picsum.photos/id/580/400/225",
     "description": "2023年度游戏",
     "onlinePlayers": 287650,
     "priceOriginal": 298,
@@ -1041,7 +1269,11 @@
     "trending": "hot",
     "peakPlayers": 360000,
     "averagePlayTime": 110,
-    "tags": ["RPG", "策略", "剧情"]
+    "tags": [
+      "RPG",
+      "策略",
+      "剧情"
+    ]
   },
   {
     "id": 59,
@@ -1050,7 +1282,7 @@
     "hotness": 8800,
     "type": "ARPG",
     "price": "¥398",
-    "cover": "https://wallpaperaccess.com/full/3456789.jpg",
+    "cover": "https://picsum.photos/id/590/400/225",
     "description": "莉莉丝归来",
     "onlinePlayers": 345678,
     "priceOriginal": 398,
@@ -1059,7 +1291,11 @@
     "trending": "up",
     "peakPlayers": 425000,
     "averagePlayTime": 165,
-    "tags": ["ARPG", "暗黑", "刷子"]
+    "tags": [
+      "ARPG",
+      "暗黑",
+      "刷子"
+    ]
   },
   {
     "id": 60,
@@ -1068,7 +1304,7 @@
     "hotness": 8400,
     "type": "ARPG",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/600/400/225",
     "description": "最复杂的ARPG",
     "onlinePlayers": 234567,
     "priceOriginal": 0,
@@ -1077,7 +1313,11 @@
     "trending": "up",
     "peakPlayers": 290000,
     "averagePlayTime": 520,
-    "tags": ["ARPG", "硬核", "刷子"]
+    "tags": [
+      "ARPG",
+      "硬核",
+      "刷子"
+    ]
   },
   {
     "id": 61,
@@ -1086,7 +1326,7 @@
     "hotness": 6800,
     "type": "派对游戏",
     "price": "¥48",
-    "cover": "https://wallpaperaccess.com/full/6789012.jpg",
+    "cover": "https://picsum.photos/id/610/400/225",
     "description": "朋友绝交制造机",
     "onlinePlayers": 123456,
     "priceOriginal": 48,
@@ -1095,7 +1335,11 @@
     "trending": "stable",
     "peakPlayers": 150000,
     "averagePlayTime": 45,
-    "tags": ["派对", "休闲", "多人"]
+    "tags": [
+      "派对",
+      "休闲",
+      "多人"
+    ]
   },
   {
     "id": 62,
@@ -1104,7 +1348,7 @@
     "hotness": 7500,
     "type": "社交推理",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/620/400/225",
     "description": "鹅版Among Us",
     "onlinePlayers": 456789,
     "priceOriginal": 0,
@@ -1113,7 +1357,11 @@
     "trending": "stable",
     "peakPlayers": 580000,
     "averagePlayTime": 80,
-    "tags": ["社交", "推理", "可爱"]
+    "tags": [
+      "社交",
+      "推理",
+      "可爱"
+    ]
   },
   {
     "id": 63,
@@ -1122,7 +1370,7 @@
     "hotness": 7200,
     "type": "生存",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/8901234.jpg",
+    "cover": "https://picsum.photos/id/630/400/225",
     "description": "这就是你会死的方式",
     "onlinePlayers": 167890,
     "priceOriginal": 68,
@@ -1131,7 +1379,11 @@
     "trending": "up",
     "peakPlayers": 210000,
     "averagePlayTime": 280,
-    "tags": ["生存", "僵尸", "硬核"]
+    "tags": [
+      "生存",
+      "僵尸",
+      "硬核"
+    ]
   },
   {
     "id": 64,
@@ -1140,7 +1392,7 @@
     "hotness": 7800,
     "type": "生存",
     "price": "¥128",
-    "cover": "https://wallpaperaccess.com/full/9012345.jpg",
+    "cover": "https://picsum.photos/id/640/400/225",
     "description": "裸奔与抢劫",
     "onlinePlayers": 234567,
     "priceOriginal": 128,
@@ -1149,7 +1401,11 @@
     "trending": "stable",
     "peakPlayers": 290000,
     "averagePlayTime": 450,
-    "tags": ["生存", "多人", "PvP"]
+    "tags": [
+      "生存",
+      "多人",
+      "PvP"
+    ]
   },
   {
     "id": 65,
@@ -1158,7 +1414,7 @@
     "hotness": 7400,
     "type": "自动化",
     "price": "¥98",
-    "cover": "https://images.unsplash.com/photo-1611996575749-79a3ae8f1e2a?w=400&h=225&fit=crop",
+    "cover": "https://picsum.photos/id/650/400/225",
     "description": "工厂必须转起来",
     "onlinePlayers": 145678,
     "priceOriginal": 98,
@@ -1167,7 +1423,11 @@
     "trending": "stable",
     "peakPlayers": 180000,
     "averagePlayTime": 680,
-    "tags": ["自动化", "策略", "建造"]
+    "tags": [
+      "自动化",
+      "策略",
+      "建造"
+    ]
   },
   {
     "id": 66,
@@ -1176,7 +1436,7 @@
     "hotness": 7300,
     "type": "自动化",
     "price": "¥108",
-    "cover": "https://wallpaperaccess.com/full/0123456.jpg",
+    "cover": "https://picsum.photos/id/660/400/225",
     "description": "3D版Factorio",
     "onlinePlayers": 123456,
     "priceOriginal": 108,
@@ -1185,7 +1445,11 @@
     "trending": "up",
     "peakPlayers": 155000,
     "averagePlayTime": 520,
-    "tags": ["自动化", "建造", "第一人称"]
+    "tags": [
+      "自动化",
+      "建造",
+      "第一人称"
+    ]
   },
   {
     "id": 67,
@@ -1194,7 +1458,7 @@
     "hotness": 7100,
     "type": "生存",
     "price": "¥48",
-    "cover": "https://wallpaperaccess.com/full/2345678.jpg",
+    "cover": "https://picsum.photos/id/670/400/225",
     "description": "别饿死联机版",
     "onlinePlayers": 189012,
     "priceOriginal": 48,
@@ -1203,7 +1467,11 @@
     "trending": "stable",
     "peakPlayers": 235000,
     "averagePlayTime": 320,
-    "tags": ["生存", "多人", "独立"]
+    "tags": [
+      "生存",
+      "多人",
+      "独立"
+    ]
   },
   {
     "id": 68,
@@ -1212,7 +1480,7 @@
     "hotness": 6800,
     "type": "解谜",
     "price": "¥38",
-    "cover": "https://wallpaperaccess.com/full/3456789.jpg",
+    "cover": "https://picsum.photos/id/680/400/225",
     "description": "有史以来最佳解谜",
     "onlinePlayers": 98765,
     "priceOriginal": 38,
@@ -1221,7 +1489,11 @@
     "trending": "stable",
     "peakPlayers": 125000,
     "averagePlayTime": 12,
-    "tags": ["解谜", "第一人称", "经典"]
+    "tags": [
+      "解谜",
+      "第一人称",
+      "经典"
+    ]
   },
   {
     "id": 69,
@@ -1230,7 +1502,7 @@
     "hotness": 7200,
     "type": "VR",
     "price": "¥298",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/690/400/225",
     "description": "VR神作",
     "onlinePlayers": 45678,
     "priceOriginal": 298,
@@ -1239,7 +1511,11 @@
     "trending": "stable",
     "peakPlayers": 58000,
     "averagePlayTime": 18,
-    "tags": ["VR", "射击", "剧情"]
+    "tags": [
+      "VR",
+      "射击",
+      "剧情"
+    ]
   },
   {
     "id": 70,
@@ -1248,7 +1524,7 @@
     "hotness": 7800,
     "type": "VR音乐",
     "price": "¥108",
-    "cover": "https://wallpaperaccess.com/full/5678901.jpg",
+    "cover": "https://picsum.photos/id/700/400/225",
     "description": "光剑砍方块",
     "onlinePlayers": 123456,
     "priceOriginal": 108,
@@ -1257,7 +1533,11 @@
     "trending": "up",
     "peakPlayers": 150000,
     "averagePlayTime": 85,
-    "tags": ["VR", "音乐", "节奏"]
+    "tags": [
+      "VR",
+      "音乐",
+      "节奏"
+    ]
   },
   {
     "id": 71,
@@ -1266,7 +1546,7 @@
     "hotness": 6500,
     "type": "射击",
     "price": "¥38",
-    "cover": "https://wallpaperaccess.com/full/6789012.jpg",
+    "cover": "https://picsum.photos/id/710/400/225",
     "description": "永远的神",
     "onlinePlayers": 67890,
     "priceOriginal": 38,
@@ -1275,7 +1555,11 @@
     "trending": "stable",
     "peakPlayers": 85000,
     "averagePlayTime": 14,
-    "tags": ["射击", "经典", "剧情"]
+    "tags": [
+      "射击",
+      "经典",
+      "剧情"
+    ]
   },
   {
     "id": 72,
@@ -1284,7 +1568,7 @@
     "hotness": 8500,
     "type": "开放世界RPG",
     "price": "¥149",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/720/400/225",
     "description": "开放世界RPG巅峰",
     "onlinePlayers": 345678,
     "priceOriginal": 149,
@@ -1293,7 +1577,11 @@
     "trending": "up",
     "peakPlayers": 425000,
     "averagePlayTime": 140,
-    "tags": ["RPG", "开放世界", "奇幻"]
+    "tags": [
+      "RPG",
+      "开放世界",
+      "奇幻"
+    ]
   },
   {
     "id": 73,
@@ -1302,7 +1590,7 @@
     "hotness": 8900,
     "type": "动作冒险",
     "price": "¥398",
-    "cover": "https://wallpaperaccess.com/full/9012345.jpg",
+    "cover": "https://picsum.photos/id/730/400/225",
     "description": "纽约飞荡",
     "onlinePlayers": 267890,
     "priceOriginal": 398,
@@ -1311,7 +1599,11 @@
     "trending": "hot",
     "peakPlayers": 330000,
     "averagePlayTime": 28,
-    "tags": ["超级英雄", "动作", "开放世界"]
+    "tags": [
+      "超级英雄",
+      "动作",
+      "开放世界"
+    ]
   },
   {
     "id": 74,
@@ -1320,7 +1612,7 @@
     "hotness": 7600,
     "type": "合作射击",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/0123456.jpg",
+    "cover": "https://picsum.photos/id/740/400/225",
     "description": "忍者高达",
     "onlinePlayers": 289012,
     "priceOriginal": 0,
@@ -1329,7 +1621,11 @@
     "trending": "stable",
     "peakPlayers": 350000,
     "averagePlayTime": 420,
-    "tags": ["射击", "科幻", "多人"]
+    "tags": [
+      "射击",
+      "科幻",
+      "多人"
+    ]
   },
   {
     "id": 75,
@@ -1338,7 +1634,7 @@
     "hotness": 7800,
     "type": "MMOFPS",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/1234567.jpg",
+    "cover": "https://picsum.photos/id/750/400/225",
     "description": "光能守护者",
     "onlinePlayers": 456789,
     "priceOriginal": 0,
@@ -1347,7 +1643,11 @@
     "trending": "stable",
     "peakPlayers": 580000,
     "averagePlayTime": 520,
-    "tags": ["射击", "科幻", "MMO"]
+    "tags": [
+      "射击",
+      "科幻",
+      "MMO"
+    ]
   },
   {
     "id": 76,
@@ -1356,7 +1656,7 @@
     "hotness": 7900,
     "type": "合作射击",
     "price": "¥98",
-    "cover": "https://wallpaperaccess.com/full/3456789.jpg",
+    "cover": "https://picsum.photos/id/760/400/225",
     "description": "矮人挖矿爆虫",
     "onlinePlayers": 178901,
     "priceOriginal": 98,
@@ -1365,7 +1665,11 @@
     "trending": "up",
     "peakPlayers": 220000,
     "averagePlayTime": 195,
-    "tags": ["射击", "合作", "矿工"]
+    "tags": [
+      "射击",
+      "合作",
+      "矿工"
+    ]
   },
   {
     "id": 77,
@@ -1374,7 +1678,7 @@
     "hotness": 6800,
     "type": "合作射击",
     "price": "¥38",
-    "cover": "https://wallpaperaccess.com/full/4567890.jpg",
+    "cover": "https://picsum.photos/id/770/400/225",
     "description": "经典僵尸四人组",
     "onlinePlayers": 234567,
     "priceOriginal": 38,
@@ -1383,7 +1687,11 @@
     "trending": "stable",
     "peakPlayers": 290000,
     "averagePlayTime": 380,
-    "tags": ["射击", "僵尸", "合作"]
+    "tags": [
+      "射击",
+      "僵尸",
+      "合作"
+    ]
   },
   {
     "id": 78,
@@ -1392,7 +1700,7 @@
     "hotness": 7700,
     "type": "体育竞技",
     "price": "免费",
-    "cover": "https://wallpaperaccess.com/full/7890123.jpg",
+    "cover": "https://picsum.photos/id/780/400/225",
     "description": "车式足球",
     "onlinePlayers": 345678,
     "priceOriginal": 0,
@@ -1401,7 +1709,11 @@
     "trending": "stable",
     "peakPlayers": 420000,
     "averagePlayTime": 280,
-    "tags": ["体育", "竞技", "赛车"]
+    "tags": [
+      "体育",
+      "竞技",
+      "赛车"
+    ]
   },
   {
     "id": 79,
@@ -1410,7 +1722,7 @@
     "hotness": 7200,
     "type": "合作烹饪",
     "price": "¥68",
-    "cover": "https://wallpaperaccess.com/full/8901234.jpg",
+    "cover": "https://picsum.photos/id/790/400/225",
     "description": "厨房爆炸模拟器",
     "onlinePlayers": 156789,
     "priceOriginal": 68,
@@ -1419,7 +1731,11 @@
     "trending": "stable",
     "peakPlayers": 195000,
     "averagePlayTime": 35,
-    "tags": ["合作", "派对", "休闲"]
+    "tags": [
+      "合作",
+      "派对",
+      "休闲"
+    ]
   },
   {
     "id": 80,
@@ -1428,7 +1744,7 @@
     "hotness": 7400,
     "type": "海盗冒险",
     "price": "¥148",
-    "cover": "https://wallpaperaccess.com/full/1234567.jpg",
+    "cover": "https://picsum.photos/id/800/400/225",
     "description": "一起当海盗",
     "onlinePlayers": 189012,
     "priceOriginal": 148,
@@ -1437,6 +1753,10 @@
     "trending": "stable",
     "peakPlayers": 235000,
     "averagePlayTime": 165,
-    "tags": ["海盗", "多人", "冒险"]
+    "tags": [
+      "海盗",
+      "多人",
+      "冒险"
+    ]
   }
 ]

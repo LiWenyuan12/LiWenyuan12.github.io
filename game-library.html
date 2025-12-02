@@ -67,8 +67,8 @@
     /* 网格布局 */
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
       padding: 20px 0;
     }
     
@@ -92,6 +92,9 @@
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       animation: slideInUp 0.6s ease-out;
       cursor: pointer;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
     }
     
     /* 流光边框效果 */
@@ -227,6 +230,9 @@
       padding: 20px;
       position: relative;
       z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     
     .game-title {
@@ -244,10 +250,11 @@
       color: #cbd5e1;
       margin-bottom: 12px;
       line-height: 1.6;
-      height: 44px;
+      min-height: 44px;
+      max-height: 66px;
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       font-weight: 500;
     }
@@ -284,6 +291,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
       margin-bottom: 12px;
+      margin-top: auto;
     }
     
     .stat-item {
@@ -325,6 +333,7 @@
         rgba(56, 189, 248, 0.1) 0%, 
         rgba(56, 189, 248, 0.05) 100%);
       border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-top: 8px;
     }
     
     .price-original {
