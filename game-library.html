@@ -5,17 +5,30 @@
   <title>GameBox 游盒 - 游戏库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="index.css" />
+  <!-- 添加Google Fonts以优化字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
   <style>
-    /* 实时数据动画 */
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+    /* 全局字体优化 */
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
     
-    @keyframes slideIn {
+    /* 实时数据动画 */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    
+    @keyframes slideInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -28,176 +41,463 @@
       100% { background-position: 1000px 0; }
     }
     
-    /* 游戏卡片增强 */
-    .game-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: slideIn 0.5s ease-out;
-      position: relative;
-      overflow: hidden;
+    /* 流光特效动画 */
+    @keyframes flowingLight {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
     }
     
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.3),
+                    0 0 40px rgba(56, 189, 248, 0.2),
+                    0 0 60px rgba(56, 189, 248, 0.1);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(56, 189, 248, 0.5),
+                    0 0 60px rgba(56, 189, 248, 0.3),
+                    0 0 90px rgba(56, 189, 248, 0.2);
+      }
+    }
+    
+    /* 网格布局 */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+      padding: 20px 0;
+    }
+    
+    @media (max-width: 768px) {
+      .game-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+    
+    /* 游戏卡片优化 */
+    .game-card {
+      position: relative;
+      background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.98) 0%, 
+        rgba(15, 23, 42, 0.95) 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: slideInUp 0.6s ease-out;
+      cursor: pointer;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* 流光边框效果 */
     .game-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.8),
+        rgba(139, 92, 246, 0.8),
+        rgba(236, 72, 153, 0.8),
+        transparent
+      );
+      background-size: 200% 100%;
+      border-radius: 16px;
+      opacity: 0;
+      z-index: -1;
+      animation: flowingLight 3s linear infinite;
+      transition: opacity 0.4s;
+    }
+    
+    .game-card:hover::before {
+      opacity: 1;
+    }
+    
+    /* 流光内发光 */
+    .game-card::after {
       content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
-      transition: left 0.5s;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.15),
+        transparent
+      );
+      transition: left 0.7s;
     }
     
-    .game-card:hover::before {
+    .game-card:hover::after {
       left: 100%;
     }
     
     .game-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
-      border-color: rgba(56, 189, 248, 0.8);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                  0 0 60px rgba(56, 189, 248, 0.3);
+      border-color: rgba(56, 189, 248, 0.6);
+    }
+    
+    /* 游戏封面区域 */
+    .game-card-header {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+      border-radius: 16px 16px 0 0;
+    }
+    
+    .game-card-cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0.9);
+    }
+    
+    .game-card:hover .game-card-cover {
+      transform: scale(1.15);
+      filter: brightness(1.1);
+    }
+    
+    /* 渐变遮罩 */
+    .game-card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, 
+        rgba(15, 23, 42, 0.95) 0%,
+        rgba(15, 23, 42, 0.6) 50%,
+        transparent 100%);
+      pointer-events: none;
+    }
+    
+    /* 折扣标签 */
+    .discount-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: white;
+      font-weight: 900;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.6);
+      z-index: 2;
+      animation: pulse 2s infinite;
+      letter-spacing: 0.5px;
+    }
+    
+    /* 评分徽章 */
+    .rating-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(234, 179, 8, 0.95) 0%, rgba(202, 138, 4, 0.95) 100%);
+      color: #fff;
+      font-weight: 900;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(234, 179, 8, 0.5);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.5px;
+    }
+    
+    /* 卡片内容 */
+    .game-card-body {
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .game-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #e0f2fe;
+      margin-bottom: 8px;
+      line-height: 1.3;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.3px;
+    }
+    
+    .game-description {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+      line-height: 1.6;
+      min-height: 44px;
+      max-height: 66px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      font-weight: 500;
+    }
+    
+    /* 游戏标签 */
+    .game-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    
+    .game-tag {
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #7dd3fc;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.3s;
+      letter-spacing: 0.3px;
+    }
+    
+    .game-tag:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: rgba(56, 189, 248, 0.5);
+      transform: translateY(-2px);
+    }
+    
+    /* 统计数据 */
+    .game-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+      margin-top: auto;
+    }
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    
+    .stat-icon {
+      font-size: 16px;
+    }
+    
+    .stat-value {
+      color: #7dd3fc;
+      font-weight: 900;
+    }
+    
+    .stat-label {
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    
+    /* 价格显示 */
+    .game-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, 
+        rgba(56, 189, 248, 0.1) 0%, 
+        rgba(56, 189, 248, 0.05) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      margin-top: 8px;
+    }
+    
+    .price-original {
+      text-decoration: line-through;
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .price-current {
+      color: #10b981;
+      font-size: 24px;
+      font-weight: 900;
+      text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+      letter-spacing: 0.5px;
+    }
+    
+    .price-free {
+      color: #10b981;
+      font-size: 20px;
+      font-weight: 900;
+      text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+      letter-spacing: 0.5px;
+    }
+    
+    /* 趋势指示器 */
+    .trending-hot {
+      color: #ef4444;
+      font-size: 20px;
+      animation: pulse 1.5s infinite;
+      filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.8));
+    }
+    
+    .trending-up {
+      color: #10b981;
+      font-size: 18px;
+      filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.6));
+    }
+    
+    .trending-down {
+      color: #f59e0b;
+      font-size: 18px;
+      filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
+    }
+    
+    .trending-stable {
+      color: #6b7280;
+      font-size: 18px;
     }
     
     /* 实时数据徽章 */
     .live-badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
+      gap: 6px;
+      padding: 4px 12px;
       border-radius: 999px;
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 900;
       background: linear-gradient(135deg, #10b981, #059669);
       color: white;
       animation: pulse 2s infinite;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+      letter-spacing: 0.5px;
     }
     
     .live-dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: white;
       animation: pulse 1.5s infinite;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
     
-    /* 游戏统计数据 */
-    .game-stats {
-      margin-top: 8px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      font-size: 0.9em;
-    }
-    
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 3px 8px;
-      border-radius: 6px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-    
-    .stat-icon {
-      font-size: 1.1em;
-    }
-    
-    .stat-value {
-      font-weight: 600;
-      color: #e0f2fe;
-    }
-    
-    /* 趋势指示器 */
-    .trending-hot {
-      color: #ef4444;
-      font-size: 1.2em;
-      animation: pulse 1s infinite;
-    }
-    
-    .trending-up {
-      color: #10b981;
-    }
-    
-    .trending-down {
-      color: #f59e0b;
-    }
-    
-    .trending-stable {
-      color: #6b7280;
-    }
-    
-    /* 折扣标签 */
-    .discount-badge {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      color: white;
-      font-weight: 700;
-      font-size: 0.9em;
-      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
-      z-index: 1;
-    }
-    
-    /* 价格展示 */
-    .price-container {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    
-    .price-original {
-      text-decoration: line-through;
-      color: #9ca3af;
-      font-size: 0.9em;
-    }
-    
-    .price-current {
-      color: #10b981;
-      font-weight: 700;
-      font-size: 1.1em;
-    }
-    
-    /* 筛选栏增强 */
+    /* 筛选栏优化 */
     .filter-section {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.98) 0%, 
+        rgba(15, 23, 42, 0.95) 100%);
       border: 1px solid rgba(56, 189, 248, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
     }
     
-    /* 排序按钮组 */
+    .filter-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.1),
+        transparent
+      );
+      animation: flowingLight 4s linear infinite;
+    }
+    
+    /* 排序按钮优化 */
     .sort-buttons {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
     }
     
     .sort-btn {
-      padding: 6px 12px;
-      border-radius: 999px;
+      padding: 10px 18px;
+      border-radius: 10px;
       border: 1px solid rgba(56, 189, 248, 0.3);
       background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-      font-size: 12px;
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+    }
+    
+    .sort-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .sort-btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
     
     .sort-btn:hover {
       border-color: rgba(56, 189, 248, 0.6);
-      background: rgba(15, 23, 42, 1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
     }
     
     .sort-btn.active {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(56, 189, 248, 0.2));
+      background: linear-gradient(135deg, 
+        rgba(56, 189, 248, 0.3) 0%, 
+        rgba(56, 189, 248, 0.2) 100%);
       border-color: rgba(56, 189, 248, 0.8);
       color: #e0f2fe;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+      animation: glowPulse 3s ease-in-out infinite;
     }
     
-    /* 统计面板 */
+    .sort-btn.active span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* 统计面板优化 */
     .stats-panel {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -206,71 +506,126 @@
     }
     
     .stat-card {
-      padding: 12px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(15, 23, 42, 0.8));
+      padding: 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, 
+        rgba(56, 189, 248, 0.12) 0%, 
+        rgba(15, 23, 42, 0.9) 100%);
       border: 1px solid rgba(56, 189, 248, 0.3);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(56, 189, 248, 0.1) 50%,
+        transparent 70%
+      );
+      animation: flowingLight 5s linear infinite;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.3);
+      border-color: rgba(56, 189, 248, 0.6);
     }
     
     .stat-card-label {
-      font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 4px;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.5px;
     }
     
     .stat-card-value {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 900;
       color: #e0f2fe;
+      text-shadow: 0 2px 8px rgba(56, 189, 248, 0.6);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.5px;
+    }
+    
+    /* 空状态优化 */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: #6b7280;
+    }
+    
+    .empty-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      opacity: 0.6;
+      animation: pulse 2s infinite;
+    }
+    
+    .empty-text {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+    
+    .empty-hint {
+      font-size: 16px;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+    
+    /* 输入框优化 */
+    input[type="text"],
+    select {
+      font-family: 'Noto Sans SC', sans-serif !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      letter-spacing: 0.3px !important;
     }
     
     /* 加载骨架屏 */
     .skeleton {
       background: linear-gradient(90deg, 
         rgba(15, 23, 42, 0.9) 25%, 
-        rgba(56, 189, 248, 0.1) 50%, 
+        rgba(56, 189, 248, 0.15) 50%, 
         rgba(15, 23, 42, 0.9) 75%
       );
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
-      border-radius: 10px;
+      border-radius: 16px;
+      height: 400px;
     }
     
-    /* 游戏封面容器 */
-    .game-cover-container {
-      position: relative;
-      width: 90px;
-      height: 90px;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* 滚动条美化 */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
     }
     
-    .game-cover {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s;
+    ::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.5);
     }
     
-    .game-card:hover .game-cover {
-      transform: scale(1.1);
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #38bdf8, #8b5cf6);
+      border-radius: 5px;
     }
     
-    /* 空状态 */
-    .empty-state {
-      text-align: center;
-      padding: 60px 20px;
-      color: #6b7280;
-    }
-    
-    .empty-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      opacity: 0.5;
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #0ea5e9, #7c3aed);
     }
   </style>
 </head>
@@ -313,9 +668,9 @@
   <main class="main">
     <section>
       <div class="card">
-        <div class="page-title">游戏库</div>
+        <div class="page-title">🎮 游戏库</div>
         <div class="page-intro">
-          通过名称、类型、平台和价格区间来筛选你感兴趣的游戏，查看实时在线玩家数和游戏热度。
+          浏览 80+ 款精选游戏，通过名称、类型、价格筛选你感兴趣的游戏，查看实时在线玩家数和游戏热度。
         </div>
       </div>
 
@@ -333,13 +688,13 @@
 
         <div class="form">
           <div class="form-row">
-            <label for="libSearch">按名称搜索</label>
-            <input type="text" id="libSearch" placeholder="输入游戏名，如：原神、黑神话" />
+            <label for="libSearch">🔍 按名称搜索</label>
+            <input type="text" id="libSearch" placeholder="输入游戏名，如：原神、黑神话、艾尔登法环..." />
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
             <div class="form-row">
-              <label for="libType">游戏类型</label>
+              <label for="libType">🎯 游戏类型</label>
               <select id="libType">
                 <option value="all">全部类型</option>
                 <option value="开放世界">开放世界</option>
@@ -351,11 +706,14 @@
                 <option value="Roguelike">Roguelike</option>
                 <option value="生存">生存</option>
                 <option value="竞技射击">竞技射击</option>
+                <option value="合作射击">合作射击</option>
+                <option value="ARPG">ARPG</option>
+                <option value="策略">策略</option>
               </select>
             </div>
 
             <div class="form-row">
-              <label for="libPrice">价格区间</label>
+              <label for="libPrice">💰 价格区间</label>
               <select id="libPrice">
                 <option value="all">全部</option>
                 <option value="free">免费 / F2P</option>
@@ -367,13 +725,13 @@
           </div>
 
           <div class="form-row">
-            <label>排序方式</label>
+            <label>🔥 排序方式</label>
             <div class="sort-buttons">
-              <button class="sort-btn active" data-sort="hot">🔥 热度排行</button>
-              <button class="sort-btn" data-sort="rating">⭐ 评分最高</button>
-              <button class="sort-btn" data-sort="online">👥 在线人数</button>
-              <button class="sort-btn" data-sort="discount">💰 折扣力度</button>
-              <button class="sort-btn" data-sort="new">🆕 最新上架</button>
+              <button class="sort-btn active" data-sort="hot"><span>🔥 热度排行</span></button>
+              <button class="sort-btn" data-sort="rating"><span>⭐ 评分最高</span></button>
+              <button class="sort-btn" data-sort="online"><span>👥 在线人数</span></button>
+              <button class="sort-btn" data-sort="discount"><span>💰 折扣力度</span></button>
+              <button class="sort-btn" data-sort="new"><span>🆕 最新上架</span></button>
             </div>
           </div>
         </div>
@@ -389,11 +747,11 @@
             <div class="chip" id="libResultCount">共 0 款</div>
           </div>
         </header>
-        <div id="libList" class="game-list">
+        <div id="libList" class="game-grid">
           <!-- 骨架屏 -->
-          <div class="game-card skeleton" style="height: 120px;"></div>
-          <div class="game-card skeleton" style="height: 120px;"></div>
-          <div class="game-card skeleton" style="height: 120px;"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
         </div>
       </div>
     </section>
@@ -416,8 +774,8 @@
             <div class="stat-card-value" id="avgRating">-</div>
           </div>
           <div class="stat-card">
-            <div class="stat-card-label">最热游戏</div>
-            <div class="stat-card-value" id="hotestGame" style="font-size: 12px;">-</div>
+            <div class="stat-card-label">游戏总数</div>
+            <div class="stat-card-value" id="totalGames">-</div>
           </div>
         </div>
         
@@ -445,6 +803,7 @@
           <span class="pill pill-soft" style="cursor: pointer;" data-type="沙盒">沙盒</span>
           <span class="pill pill-soft" style="cursor: pointer;" data-type="竞技射击">竞技射击</span>
           <span class="pill pill-soft" style="cursor: pointer;" data-type="Roguelike">Roguelike</span>
+          <span class="pill pill-soft" style="cursor: pointer;" data-type="ARPG">ARPG</span>
         </div>
       </div>
     </aside>
@@ -468,7 +827,7 @@
   const totalOnline = document.getElementById("totalOnline");
   const discountCount = document.getElementById("discountCount");
   const avgRating = document.getElementById("avgRating");
-  const hotestGame = document.getElementById("hotestGame");
+  const totalGames = document.getElementById("totalGames");
   const lastUpdate = document.getElementById("lastUpdate");
 
   // 格式化数字
@@ -495,12 +854,11 @@
     const total = gameData.reduce((sum, g) => sum + (g.onlinePlayers || 0), 0);
     const discounts = gameData.filter(g => g.discount && g.discount > 0).length;
     const avgScore = (gameData.reduce((sum, g) => sum + g.rating, 0) / gameData.length).toFixed(1);
-    const hottest = gameData.reduce((max, g) => g.hotness > max.hotness ? g : max, gameData[0]);
     
     if (totalOnline) totalOnline.textContent = formatNumber(total);
     if (discountCount) discountCount.textContent = discounts;
     if (avgRating) avgRating.textContent = avgScore;
-    if (hotestGame) hotestGame.textContent = hottest?.name || '-';
+    if (totalGames) totalGames.textContent = gameData.length;
     if (lastUpdate) {
       const now = new Date();
       lastUpdate.textContent = now.toLocaleTimeString('zh-CN');
@@ -515,7 +873,9 @@
     const kw = libSearch.value.trim().toLowerCase();
     if (kw) {
       filtered = filtered.filter(g =>
-        g.name.toLowerCase().includes(kw) || g.description.toLowerCase().includes(kw)
+        g.name.toLowerCase().includes(kw) || 
+        g.description.toLowerCase().includes(kw) ||
+        (g.tags && g.tags.some(tag => tag.toLowerCase().includes(kw)))
       );
     }
 
@@ -567,100 +927,91 @@
 
     if (filtered.length === 0) {
       libList.innerHTML = `
-        <div class="empty-state">
+        <div class="empty-state" style="grid-column: 1 / -1;">
           <div class="empty-icon">🎮</div>
-          <div style="font-size: 16px; margin-bottom: 8px;">没有找到符合条件的游戏</div>
-          <div style="font-size: 14px; color: #9ca3af;">试试调整筛选条件</div>
+          <div class="empty-text">没有找到符合条件的游戏</div>
+          <div class="empty-hint">试试调整筛选条件或搜索关键词</div>
         </div>
       `;
       return;
     }
 
     filtered.forEach((game, index) => {
-      const div = document.createElement("div");
-      div.className = "game-card";
-      div.style.animationDelay = `${index * 0.05}s`;
+      const card = document.createElement("div");
+      card.className = "game-card";
+      card.style.animationDelay = `${(index % 12) * 0.05}s`;
 
-      // 构建实时数据显示
-      let statsHTML = '';
-      if (game.onlinePlayers !== undefined) {
-        statsHTML = `
-          <div class="game-stats">
-            <span class="stat-item">
-              <span class="stat-icon">👥</span>
-              <span class="stat-value">${formatNumber(game.onlinePlayers)}</span>
-            </span>
-        `;
+      // 标签HTML
+      const tagsHTML = game.tags ? game.tags.slice(0, 3).map(tag => 
+        `<span class="game-tag">${tag}</span>`
+      ).join('') : '';
 
-        if (game.peakPlayers) {
-          statsHTML += `
-            <span class="stat-item">
-              <span class="stat-icon">📊</span>
-              <span class="stat-value">峰值 ${formatNumber(game.peakPlayers)}</span>
-            </span>
-          `;
-        }
+      // 统计数据HTML
+      const statsHTML = game.onlinePlayers !== undefined ? `
+        <div class="game-stats">
+          <div class="stat-item">
+            <span class="stat-icon">👥</span>
+            <div>
+              <div class="stat-value">${formatNumber(game.onlinePlayers)}</div>
+              <div class="stat-label">在线</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">📊</span>
+            <div>
+              <div class="stat-value">${formatNumber(game.peakPlayers)}</div>
+              <div class="stat-label">峰值</div>
+            </div>
+          </div>
+        </div>
+      ` : '';
 
-        if (game.averagePlayTime) {
-          statsHTML += `
-            <span class="stat-item">
-              <span class="stat-icon">⏱️</span>
-              <span class="stat-value">${game.averagePlayTime}h</span>
-            </span>
-          `;
-        }
-
-        if (game.trending) {
-          statsHTML += `
-            <span class="stat-item">
-              ${getTrendingIcon(game.trending)}
-            </span>
-          `;
-        }
-
-        statsHTML += '</div>';
-      }
-
-      // 价格显示
+      // 价格HTML
       let priceHTML = '';
       if (game.discount > 0) {
         priceHTML = `
-          <div class="price-container">
-            <span class="price-original">¥${game.priceOriginal}</span>
-            <span class="price-current">¥${game.priceNow}</span>
+          <div class="game-price">
+            <div>
+              <div class="price-original">¥${game.priceOriginal}</div>
+              <div class="price-current">¥${game.priceNow}</div>
+            </div>
+            ${getTrendingIcon(game.trending)}
           </div>
         `;
       } else if (game.priceNow > 0) {
         priceHTML = `
-          <div class="price-container">
-            <span class="price-current">¥${game.priceNow}</span>
+          <div class="game-price">
+            <div class="price-current">¥${game.priceNow}</div>
+            ${getTrendingIcon(game.trending)}
           </div>
         `;
       } else {
         priceHTML = `
-          <div class="price-container">
-            <span class="price-current" style="color: #10b981;">免费游玩</span>
+          <div class="game-price">
+            <div class="price-free">免费游玩</div>
+            ${getTrendingIcon(game.trending)}
           </div>
         `;
       }
 
-      div.innerHTML = `
-        ${game.discount > 0 ? `<div class="discount-badge">-${game.discount}%</div>` : ''}
-        <div class="game-cover-container">
-          <div class="game-cover" style="background-image:url('${game.cover}')"></div>
+      card.innerHTML = `
+        <div class="game-card-header">
+          <img class="game-card-cover" src="${game.cover}" alt="${game.name}" onerror="this.src='https://via.placeholder.com/400x225/0f172a/38bdf8?text=${encodeURIComponent(game.name)}'">
+          ${game.discount > 0 ? `<div class="discount-badge">-${game.discount}%</div>` : ''}
+          <div class="rating-badge">⭐ ${game.rating}</div>
         </div>
-        <div class="game-info">
-          <div class="game-name">${game.name}</div>
-          <div class="game-meta">
-            ${game.type} • ⭐ ${game.rating} • 🔥 ${game.hotness}
+        <div class="game-card-body">
+          <h3 class="game-title">${game.name}</h3>
+          <p class="game-description">${game.description}</p>
+          <div class="game-tags">
+            ${tagsHTML}
           </div>
-          <div class="game-desc">${game.description}</div>
-          ${priceHTML}
           ${statsHTML}
+          ${priceHTML}
         </div>
       `;
 
-      libList.appendChild(div);
+      libList.appendChild(card);
     });
   }
 
@@ -723,9 +1074,10 @@
     .catch(err => {
       console.error(err);
       libList.innerHTML = `
-        <div class="empty-state">
+        <div class="empty-state" style="grid-column: 1 / -1;">
           <div class="empty-icon">❌</div>
-          <div style="color: #ef4444;">加载失败：找不到 games-library.json</div>
+          <div class="empty-text" style="color: #ef4444;">加载失败</div>
+          <div class="empty-hint">找不到 games-library.json</div>
         </div>
       `;
     });
