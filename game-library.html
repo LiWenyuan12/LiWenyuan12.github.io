@@ -5,6 +5,274 @@
   <title>GameBox 游盒 - 游戏库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="index.css" />
+  <style>
+    /* 实时数据动画 */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
+    /* 游戏卡片增强 */
+    .game-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: slideIn 0.5s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .game-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+      transition: left 0.5s;
+    }
+    
+    .game-card:hover::before {
+      left: 100%;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+      border-color: rgba(56, 189, 248, 0.8);
+    }
+    
+    /* 实时数据徽章 */
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 500;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      animation: pulse 2s infinite;
+    }
+    
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: white;
+      animation: pulse 1.5s infinite;
+    }
+    
+    /* 游戏统计数据 */
+    .game-stats {
+      margin-top: 8px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.9em;
+    }
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    
+    .stat-icon {
+      font-size: 1.1em;
+    }
+    
+    .stat-value {
+      font-weight: 600;
+      color: #e0f2fe;
+    }
+    
+    /* 趋势指示器 */
+    .trending-hot {
+      color: #ef4444;
+      font-size: 1.2em;
+      animation: pulse 1s infinite;
+    }
+    
+    .trending-up {
+      color: #10b981;
+    }
+    
+    .trending-down {
+      color: #f59e0b;
+    }
+    
+    .trending-stable {
+      color: #6b7280;
+    }
+    
+    /* 折扣标签 */
+    .discount-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9em;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.5);
+      z-index: 1;
+    }
+    
+    /* 价格展示 */
+    .price-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    
+    .price-original {
+      text-decoration: line-through;
+      color: #9ca3af;
+      font-size: 0.9em;
+    }
+    
+    .price-current {
+      color: #10b981;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+    
+    /* 筛选栏增强 */
+    .filter-section {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    
+    /* 排序按钮组 */
+    .sort-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .sort-btn {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .sort-btn:hover {
+      border-color: rgba(56, 189, 248, 0.6);
+      background: rgba(15, 23, 42, 1);
+    }
+    
+    .sort-btn.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(56, 189, 248, 0.2));
+      border-color: rgba(56, 189, 248, 0.8);
+      color: #e0f2fe;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+    
+    /* 统计面板 */
+    .stats-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    
+    .stat-card {
+      padding: 12px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      text-align: center;
+    }
+    
+    .stat-card-label {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+    
+    .stat-card-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e0f2fe;
+    }
+    
+    /* 加载骨架屏 */
+    .skeleton {
+      background: linear-gradient(90deg, 
+        rgba(15, 23, 42, 0.9) 25%, 
+        rgba(56, 189, 248, 0.1) 50%, 
+        rgba(15, 23, 42, 0.9) 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 10px;
+    }
+    
+    /* 游戏封面容器 */
+    .game-cover-container {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .game-cover {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.3s;
+    }
+    
+    .game-card:hover .game-cover {
+      transform: scale(1.1);
+    }
+    
+    /* 空状态 */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #6b7280;
+    }
+    
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+  </style>
 </head>
 <body data-current-page="library">
 <div class="page">
@@ -35,7 +303,7 @@
       <div class="header-right">
         <div class="header-search">
           <input type="text" placeholder="搜索游戏 / 资讯 / 帖子" />
-          <span class="header-search-icon">Search</span>
+          <span class="header-search-icon">🔍</span>
         </div>
         <button class="header-user">未登录 · 游客</button>
       </div>
@@ -47,49 +315,66 @@
       <div class="card">
         <div class="page-title">游戏库</div>
         <div class="page-intro">
-          通过名称、类型、平台和价格区间来筛选你感兴趣的游戏（示例数据）。
+          通过名称、类型、平台和价格区间来筛选你感兴趣的游戏，查看实时在线玩家数和游戏热度。
         </div>
       </div>
 
-      <div class="card">
+      <div class="card filter-section">
         <header class="card-header">
           <div class="card-title">
             <span class="dot"></span>
-            <span>筛选条件</span>
+            <span>筛选与排序</span>
+          </div>
+          <div class="live-badge">
+            <span class="live-dot"></span>
+            实时数据
           </div>
         </header>
 
         <div class="form">
           <div class="form-row">
             <label for="libSearch">按名称搜索</label>
-            <input type="text" id="libSearch" placeholder="输入游戏名，如：艾尔登法环" />
+            <input type="text" id="libSearch" placeholder="输入游戏名，如：原神、黑神话" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-row">
+              <label for="libType">游戏类型</label>
+              <select id="libType">
+                <option value="all">全部类型</option>
+                <option value="开放世界">开放世界</option>
+                <option value="动作">动作</option>
+                <option value="魂类">魂类</option>
+                <option value="回合制RPG">回合制RPG</option>
+                <option value="模拟经营">模拟经营</option>
+                <option value="沙盒">沙盒</option>
+                <option value="Roguelike">Roguelike</option>
+                <option value="生存">生存</option>
+                <option value="竞技射击">竞技射击</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="libPrice">价格区间</label>
+              <select id="libPrice">
+                <option value="all">全部</option>
+                <option value="free">免费 / F2P</option>
+                <option value="low">50 元以下</option>
+                <option value="mid">50-200 元</option>
+                <option value="high">200 元以上</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-row">
-            <label for="libType">类型</label>
-            <select id="libType">
-              <option value="all">全部类型</option>
-              <option value="开放世界">开放世界</option>
-              <option value="动作">动作</option>
-              <option value="魂类">魂类</option>
-              <option value="回合制RPG">回合制RPG</option>
-              <option value="模拟经营">模拟经营</option>
-              <option value="沙盒">沙盒</option>
-              <option value="Roguelike">Roguelike</option>
-              <option value="卡牌Roguelike">卡牌Roguelike</option>
-              <option value="生存">生存</option>
-              <option value="策略">策略</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <label for="libPrice">价格区间</label>
-            <select id="libPrice">
-              <option value="all">全部</option>
-              <option value="free">免费 / F2P</option>
-              <option value="low">100 元以下</option>
-              <option value="high">100 元以上</option>
-            </select>
+            <label>排序方式</label>
+            <div class="sort-buttons">
+              <button class="sort-btn active" data-sort="hot">🔥 热度排行</button>
+              <button class="sort-btn" data-sort="rating">⭐ 评分最高</button>
+              <button class="sort-btn" data-sort="online">👥 在线人数</button>
+              <button class="sort-btn" data-sort="discount">💰 折扣力度</button>
+              <button class="sort-btn" data-sort="new">🆕 最新上架</button>
+            </div>
           </div>
         </div>
       </div>
@@ -102,111 +387,135 @@
           </div>
           <div style="display: flex; gap: 8px; align-items: center;">
             <div class="chip" id="libResultCount">共 0 款</div>
-            <div class="chip" id="liveIndicator" style="background: #10b981; color: white; animation: pulse 2s infinite;">
-              ● 实时数据
-            </div>
           </div>
         </header>
-        <div id="libList" class="game-list"></div>
+        <div id="libList" class="game-list">
+          <!-- 骨架屏 -->
+          <div class="game-card skeleton" style="height: 120px;"></div>
+          <div class="game-card skeleton" style="height: 120px;"></div>
+          <div class="game-card skeleton" style="height: 120px;"></div>
+        </div>
       </div>
     </section>
 
     <aside>
       <div class="sidebar-card">
-        <div class="sidebar-title">实时数据</div>
-        <div class="sidebar-item">
-          <span class="label">在线玩家总数</span>
-          <span class="value" id="totalOnline">加载中...</span>
+        <div class="sidebar-title">📊 实时统计</div>
+        
+        <div class="stats-panel">
+          <div class="stat-card">
+            <div class="stat-card-label">总在线玩家</div>
+            <div class="stat-card-value" id="totalOnline">-</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">折扣游戏</div>
+            <div class="stat-card-value" id="discountCount">-</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">平均评分</div>
+            <div class="stat-card-value" id="avgRating">-</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">最热游戏</div>
+            <div class="stat-card-value" id="hotestGame" style="font-size: 12px;">-</div>
+          </div>
         </div>
-        <div class="sidebar-item">
-          <span class="label">折扣游戏</span>
-          <span class="value" id="discountCount">0 款</span>
+        
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(56, 189, 248, 0.2);">
+          <div class="sidebar-item">
+            <span class="label">更新频率</span>
+            <span class="value">每 30 秒</span>
+          </div>
+          <div class="sidebar-item">
+            <span class="label">数据来源</span>
+            <span class="value">模拟实时</span>
+          </div>
+          <div class="sidebar-item">
+            <span class="label">上次更新</span>
+            <span class="value" id="lastUpdate">-</span>
+          </div>
         </div>
-        <div class="sidebar-item">
-          <span class="label">更新频率</span>
-          <span class="value">每 30 秒</span>
-        </div>
-        <div class="sidebar-item">
-          <span class="label">数据来源</span>
-          <span class="value">模拟实时数据</span>
+      </div>
+
+      <div class="sidebar-card" style="margin-top: 16px;">
+        <div class="sidebar-title">🔥 热门标签</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;">
+          <span class="pill" style="cursor: pointer;" data-type="开放世界">开放世界</span>
+          <span class="pill pill-soft" style="cursor: pointer;" data-type="动作">动作</span>
+          <span class="pill pill-soft" style="cursor: pointer;" data-type="沙盒">沙盒</span>
+          <span class="pill pill-soft" style="cursor: pointer;" data-type="竞技射击">竞技射击</span>
+          <span class="pill pill-soft" style="cursor: pointer;" data-type="Roguelike">Roguelike</span>
         </div>
       </div>
     </aside>
   </main>
 </div>
 
-<style>
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.7;
-    }
-  }
-  
-  .game-card {
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .game-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-</style>
-
 <script src="common.js"></script>
 <script>
   initCommon();
 
   let gameData = [];
+  let filteredData = [];
   let updateInterval = null;
+  let currentSort = 'hot';
 
   const libSearch = document.getElementById("libSearch");
-  const libType   = document.getElementById("libType");
-  const libPrice  = document.getElementById("libPrice");
-  const libList   = document.getElementById("libList");
+  const libType = document.getElementById("libType");
+  const libPrice = document.getElementById("libPrice");
+  const libList = document.getElementById("libList");
   const libResultCount = document.getElementById("libResultCount");
   const totalOnline = document.getElementById("totalOnline");
   const discountCount = document.getElementById("discountCount");
+  const avgRating = document.getElementById("avgRating");
+  const hotestGame = document.getElementById("hotestGame");
+  const lastUpdate = document.getElementById("lastUpdate");
 
-  // 格式化在线玩家数
-  function formatPlayers(num) {
+  // 格式化数字
+  function formatNumber(num) {
     if (!num) return '0';
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
     if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-    return num.toString();
+    return num.toLocaleString();
   }
 
   // 获取趋势图标
   function getTrendingIcon(trending) {
-    if (trending === 'hot') return '🔥';
-    if (trending === 'up') return '📈';
-    if (trending === 'down') return '📉';
-    return '➖';
+    const icons = {
+      'hot': '<span class="trending-hot">🔥</span>',
+      'up': '<span class="trending-up">📈</span>',
+      'down': '<span class="trending-down">📉</span>',
+      'stable': '<span class="trending-stable">➖</span>'
+    };
+    return icons[trending] || '';
   }
 
   // 更新统计信息
   function updateStats() {
     const total = gameData.reduce((sum, g) => sum + (g.onlinePlayers || 0), 0);
     const discounts = gameData.filter(g => g.discount && g.discount > 0).length;
+    const avgScore = (gameData.reduce((sum, g) => sum + g.rating, 0) / gameData.length).toFixed(1);
+    const hottest = gameData.reduce((max, g) => g.hotness > max.hotness ? g : max, gameData[0]);
     
-    if (totalOnline) {
-      totalOnline.textContent = formatPlayers(total);
-    }
-    if (discountCount) {
-      discountCount.textContent = `${discounts} 款`;
+    if (totalOnline) totalOnline.textContent = formatNumber(total);
+    if (discountCount) discountCount.textContent = discounts;
+    if (avgRating) avgRating.textContent = avgScore;
+    if (hotestGame) hotestGame.textContent = hottest?.name || '-';
+    if (lastUpdate) {
+      const now = new Date();
+      lastUpdate.textContent = now.toLocaleTimeString('zh-CN');
     }
   }
 
-  function renderList() {
-    let filtered = gameData;
+  // 筛选数据
+  function filterData() {
+    let filtered = [...gameData];
 
     // 关键词搜索
-    const kw = libSearch.value.trim();
+    const kw = libSearch.value.trim().toLowerCase();
     if (kw) {
       filtered = filtered.filter(g =>
-        g.name.includes(kw) || g.description.includes(kw)
+        g.name.toLowerCase().includes(kw) || g.description.toLowerCase().includes(kw)
       );
     }
 
@@ -217,83 +526,137 @@
 
     // 价格筛选
     if (libPrice.value === "free") {
-      filtered = filtered.filter(g => g.price.includes("免费"));
+      filtered = filtered.filter(g => g.priceNow === 0);
     } else if (libPrice.value === "low") {
-      filtered = filtered.filter(g => {
-        const match = g.price.match(/¥(\d+)/);
-        return match && parseInt(match[1]) <= 100;
-      });
+      filtered = filtered.filter(g => g.priceNow > 0 && g.priceNow < 50);
+    } else if (libPrice.value === "mid") {
+      filtered = filtered.filter(g => g.priceNow >= 50 && g.priceNow <= 200);
     } else if (libPrice.value === "high") {
-      filtered = filtered.filter(g => {
-        const match = g.price.match(/¥(\d+)/);
-        return match && parseInt(match[1]) > 100;
-      });
+      filtered = filtered.filter(g => g.priceNow > 200);
     }
 
+    // 排序
+    switch (currentSort) {
+      case 'hot':
+        filtered.sort((a, b) => b.hotness - a.hotness);
+        break;
+      case 'rating':
+        filtered.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'online':
+        filtered.sort((a, b) => (b.onlinePlayers || 0) - (a.onlinePlayers || 0));
+        break;
+      case 'discount':
+        filtered.sort((a, b) => (b.discount || 0) - (a.discount || 0));
+        break;
+      case 'new':
+        filtered.sort((a, b) => b.id - a.id);
+        break;
+    }
+
+    filteredData = filtered;
+    return filtered;
+  }
+
+  // 渲染游戏列表
+  function renderList() {
+    const filtered = filterData();
+    
     libResultCount.textContent = `共 ${filtered.length} 款`;
     libList.innerHTML = "";
 
     if (filtered.length === 0) {
-      libList.innerHTML = '<div style="text-align:center;padding:60px;color:#888;">没有找到符合条件的游戏</div>';
+      libList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">🎮</div>
+          <div style="font-size: 16px; margin-bottom: 8px;">没有找到符合条件的游戏</div>
+          <div style="font-size: 14px; color: #9ca3af;">试试调整筛选条件</div>
+        </div>
+      `;
       return;
     }
 
-    filtered.forEach(game => {
+    filtered.forEach((game, index) => {
       const div = document.createElement("div");
       div.className = "game-card";
+      div.style.animationDelay = `${index * 0.05}s`;
 
       // 构建实时数据显示
-      let liveDataHTML = '';
+      let statsHTML = '';
       if (game.onlinePlayers !== undefined) {
-        liveDataHTML = `
-          <div style="margin-top: 8px; display: flex; gap: 12px; flex-wrap: wrap; font-size: 0.9em;">
-            <span style="color: #10b981; font-weight: 500;">
-              👥 ${formatPlayers(game.onlinePlayers)} 在线
+        statsHTML = `
+          <div class="game-stats">
+            <span class="stat-item">
+              <span class="stat-icon">👥</span>
+              <span class="stat-value">${formatNumber(game.onlinePlayers)}</span>
             </span>
         `;
 
-        // 显示价格和折扣
-        if (game.discount && game.discount > 0) {
-          liveDataHTML += `
-            <span style="color: #ef4444; font-weight: 500;">
-              💰 -${game.discount}% 折扣
-            </span>
-            <span style="text-decoration: line-through; color: #999;">
-              ¥${game.priceOriginal}
-            </span>
-            <span style="color: #10b981; font-weight: bold;">
-              ¥${game.priceNow}
-            </span>
-          `;
-        } else if (game.priceNow > 0) {
-          liveDataHTML += `
-            <span style="color: #666;">
-              💰 ¥${game.priceNow}
+        if (game.peakPlayers) {
+          statsHTML += `
+            <span class="stat-item">
+              <span class="stat-icon">📊</span>
+              <span class="stat-value">峰值 ${formatNumber(game.peakPlayers)}</span>
             </span>
           `;
         }
 
-        // 显示趋势
+        if (game.averagePlayTime) {
+          statsHTML += `
+            <span class="stat-item">
+              <span class="stat-icon">⏱️</span>
+              <span class="stat-value">${game.averagePlayTime}h</span>
+            </span>
+          `;
+        }
+
         if (game.trending) {
-          liveDataHTML += `
-            <span style="font-size: 1.2em;" title="${game.trending}">
+          statsHTML += `
+            <span class="stat-item">
               ${getTrendingIcon(game.trending)}
             </span>
           `;
         }
 
-        liveDataHTML += '</div>';
+        statsHTML += '</div>';
+      }
+
+      // 价格显示
+      let priceHTML = '';
+      if (game.discount > 0) {
+        priceHTML = `
+          <div class="price-container">
+            <span class="price-original">¥${game.priceOriginal}</span>
+            <span class="price-current">¥${game.priceNow}</span>
+          </div>
+        `;
+      } else if (game.priceNow > 0) {
+        priceHTML = `
+          <div class="price-container">
+            <span class="price-current">¥${game.priceNow}</span>
+          </div>
+        `;
+      } else {
+        priceHTML = `
+          <div class="price-container">
+            <span class="price-current" style="color: #10b981;">免费游玩</span>
+          </div>
+        `;
       }
 
       div.innerHTML = `
-        <div class="game-cover" style="background-image:url('${game.cover}')"></div>
+        ${game.discount > 0 ? `<div class="discount-badge">-${game.discount}%</div>` : ''}
+        <div class="game-cover-container">
+          <div class="game-cover" style="background-image:url('${game.cover}')"></div>
+        </div>
         <div class="game-info">
           <div class="game-name">${game.name}</div>
           <div class="game-meta">
-            ${game.type} • 评分 ${game.rating} • ${game.price}
+            ${game.type} • ⭐ ${game.rating} • 🔥 ${game.hotness}
           </div>
           <div class="game-desc">${game.description}</div>
-          ${liveDataHTML}
+          ${priceHTML}
+          ${statsHTML}
         </div>
       `;
 
@@ -305,17 +668,17 @@
   function simulateLiveUpdate() {
     gameData.forEach(game => {
       if (game.onlinePlayers !== undefined) {
-        // 在线玩家数随机波动 ±5%
-        const change = game.onlinePlayers * 0.05 * (Math.random() - 0.5);
+        // 在线玩家数随机波动 ±3%
+        const change = game.onlinePlayers * 0.03 * (Math.random() - 0.5);
         game.onlinePlayers = Math.max(0, Math.round(game.onlinePlayers + change));
         
         // 随机更新趋势
         const rand = Math.random();
-        if (rand > 0.95) {
+        if (rand > 0.97) {
           game.trending = 'hot';
-        } else if (rand > 0.7) {
+        } else if (rand > 0.75) {
           game.trending = 'up';
-        } else if (rand > 0.5) {
+        } else if (rand > 0.6) {
           game.trending = 'down';
         } else {
           game.trending = 'stable';
@@ -327,35 +690,29 @@
     updateStats();
   }
 
+  // 排序按钮事件
+  document.querySelectorAll('.sort-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelector('.sort-btn.active')?.classList.remove('active');
+      btn.classList.add('active');
+      currentSort = btn.dataset.sort;
+      renderList();
+    });
+  });
+
+  // 快速标签筛选
+  document.querySelectorAll('[data-type]').forEach(tag => {
+    tag.addEventListener('click', () => {
+      libType.value = tag.dataset.type;
+      renderList();
+    });
+  });
+
   // 加载游戏数据
   fetch("games-library.json")
     .then(res => res.json())
     .then(data => {
       gameData = data;
-      
-      // 为没有实时数据的游戏添加默认值
-      gameData.forEach(game => {
-        if (game.onlinePlayers === undefined) {
-          game.onlinePlayers = Math.floor(Math.random() * 500000);
-          
-          // 解析价格
-          const priceMatch = game.price.match(/¥(\d+)/);
-          if (priceMatch) {
-            game.priceOriginal = parseInt(priceMatch[1]);
-            game.priceNow = game.priceOriginal;
-            game.discount = 0;
-          } else {
-            game.priceOriginal = 0;
-            game.priceNow = 0;
-            game.discount = 0;
-          }
-          
-          // 随机趋势
-          const trends = ['up', 'down', 'stable', 'hot'];
-          game.trending = trends[Math.floor(Math.random() * trends.length)];
-        }
-      });
-      
       renderList();
       updateStats();
       
@@ -365,7 +722,12 @@
     })
     .catch(err => {
       console.error(err);
-      libList.innerHTML = "<div style='color:red;padding:20px;'>加载失败：找不到 games-library.json</div>";
+      libList.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon">❌</div>
+          <div style="color: #ef4444;">加载失败：找不到 games-library.json</div>
+        </div>
+      `;
     });
 
   // 筛选事件
