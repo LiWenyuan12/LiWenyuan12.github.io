@@ -7,7 +7,12 @@
     "type": "开放世界",
     "price": "免费内购",
     "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20230922/1695352805_983846.jpg",
-    "description": "米哈游出品的超人气开放世界冒险"
+    "description": "米哈游出品的超人气开放世界冒险",
+    "onlinePlayers": 1285630,
+    "priceOriginal": 0,
+    "priceNow": 0,
+    "discount": 0,
+    "trending": "up"
   },
   {
     "id": 2,
@@ -17,7 +22,12 @@
     "type": "回合制RPG",
     "price": "免费内购",
     "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20230425/1682428808_392346.jpg",
-    "description": "宇宙冒险的回合制新作"
+    "description": "宇宙冒险的回合制新作",
+    "onlinePlayers": 856420,
+    "priceOriginal": 0,
+    "priceNow": 0,
+    "discount": 0,
+    "trending": "up"
   },
   {
     "id": 3,
@@ -27,7 +37,12 @@
     "type": "动作",
     "price": "免费内购",
     "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20240712/1720771207_951234.jpg",
-    "description": "米哈游最新都市动作大作"
+    "description": "米哈游最新都市动作大作",
+    "onlinePlayers": 724380,
+    "priceOriginal": 0,
+    "priceNow": 0,
+    "discount": 0,
+    "trending": "up"
   },
   {
     "id": 4,
@@ -37,7 +52,12 @@
     "type": "动作RPG",
     "price": "¥268",
     "cover": "https://img.3dmgame.com/uploads/images/thumbkwdfirst/20240820/1724140809_987654.jpg",
-    "description": "国产3A巅峰之作"
+    "description": "国产3A巅峰之作",
+    "onlinePlayers": 432890,
+    "priceOriginal": 268,
+    "priceNow": 268,
+    "discount": 0,
+    "trending": "hot"
   },
   {
     "id": 5,
@@ -47,7 +67,12 @@
     "type": "魂类",
     "price": "¥298",
     "cover": "https://images.unsplash.com/photo-1622473596065-0d9e0e5c5b5e?w=400&h=225&fit=crop",
-    "description": "宫崎英高最新神作"
+    "description": "宫崎英高最新神作",
+    "onlinePlayers": 368540,
+    "priceOriginal": 298,
+    "priceNow": 208,
+    "discount": 30,
+    "trending": "up"
   },
   {
     "id": 6,
@@ -77,7 +102,12 @@
     "type": "模拟经营",
     "price": "¥48",
     "cover": "https://wallpaperaccess.com/full/4567890.jpg",
-    "description": "最治愈的农场生活"
+    "description": "最治愈的农场生活",
+    "onlinePlayers": 156230,
+    "priceOriginal": 48,
+    "priceNow": 33,
+    "discount": 31,
+    "trending": "stable"
   },
   {
     "id": 9,
@@ -247,7 +277,12 @@
     "type": "沙盒",
     "price": "¥165",
     "cover": "https://www.minecraft.net/content/dam/collectibles/minecraft-collectibles-wallpaper-1.jpg",
-    "description": "方块宇宙的创造之神"
+    "description": "方块宇宙的创造之神",
+    "onlinePlayers": 982345,
+    "priceOriginal": 165,
+    "priceNow": 165,
+    "discount": 0,
+    "trending": "hot"
   },
   {
     "id": 26,
@@ -287,7 +322,12 @@
     "type": "大逃杀",
     "price": "免费",
     "cover": "https://wallpaperaccess.com/full/6789012.jpg",
-    "description": "英雄射击大逃杀"
+    "description": "英雄射击大逃杀",
+    "onlinePlayers": 645820,
+    "priceOriginal": 0,
+    "priceNow": 0,
+    "discount": 0,
+    "trending": "up"
   },
   {
     "id": 30,
@@ -307,7 +347,12 @@
     "type": "竞技射击",
     "price": "免费",
     "cover": "https://wallpaperaccess.com/full/8901234.jpg",
-    "description": "经典反恐精英回归"
+    "description": "经典反恐精英回归",
+    "onlinePlayers": 1456780,
+    "priceOriginal": 0,
+    "priceNow": 0,
+    "discount": 0,
+    "trending": "hot"
   },
   {
     "id": 32,
@@ -627,7 +672,12 @@
     "type": "CRPG",
     "price": "¥298",
     "cover": "https://wallpaperaccess.com/full/2345678.jpg",
-    "description": "2023年度游戏"
+    "description": "2023年度游戏",
+    "onlinePlayers": 287650,
+    "priceOriginal": 298,
+    "priceNow": 238,
+    "discount": 20,
+    "trending": "up"
   },
   {
     "id": 64,
@@ -1127,7 +1177,12 @@
     "type": "Roguelite",
     "price": "¥18",
     "cover": "https://wallpaperaccess.com/full/9012345.jpg",
-    "description": "18块钱值一个亿"
+    "description": "18块钱值一个亿",
+    "onlinePlayers": 89420,
+    "priceOriginal": 18,
+    "priceNow": 12,
+    "discount": 33,
+    "trending": "stable"
   },
   {
     "id": 114,
